@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-main: #F5F5F0;
+  /* Off-white/Cream from image top */
+  --color-bg-secondary: #E0E0E0;
+  /* Light Gray from image bottom right */
+  --color-accent: #A8A09A;
+  /* Taupe from image bottom left */
+  --color-text-main: #1A1A1A;
+  /* Dark Charcoal for text */
+  --color-text-muted: #666666;
+  /* Medium Gray for secondary text */
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  @apply bg-bg-main text-text-main font-sans antialiased;
+  overflow-x: hidden;
+}
+
+/* Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
