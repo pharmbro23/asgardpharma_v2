@@ -48,10 +48,10 @@ function App() {
         variant="dark"
         mediaContent={
           <div className="grid grid-cols-2 gap-4">
-            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop" alt="Vintage Lab" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
-            <img src="https://images.unsplash.com/photo-1565619624098-e659884d2c2b?q=80&w=2070&auto=format&fit=crop" alt="Factory" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
-            <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=2070&auto=format&fit=crop" alt="Vials" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Building" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src="/assets/images/history-connaught-vials.png" alt="Connaught Vials" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src="/assets/images/history-scientist.png" alt="Scientist" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src="/assets/images/history-map.png" alt="Historic Map" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src="/assets/images/history-building.png" alt="Connaught Building" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
           </div>
         }
       >
