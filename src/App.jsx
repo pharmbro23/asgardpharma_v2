@@ -46,6 +46,7 @@ function App() {
         title="THE CHALLENGE"
         image="/assets/images/challenge.png"
         align="left"
+        className="bg-white"
       >
         <p>
           The global pharmaceutical industry faces a significant challenge: <strong>Accessibility</strong>. Life-saving biologics and vaccines are often too expensive or unavailable in many regions due to supply chain constraints and high manufacturing costs.
@@ -146,6 +147,7 @@ function App() {
         id="history"
         title="HISTORY"
         align="left"
+        className="bg-white"
         mediaContent={
           <div className="grid grid-cols-2 gap-4">
             <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2070&auto=format&fit=crop" alt="Vintage Lab" className="w-full h-48 object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500" />
