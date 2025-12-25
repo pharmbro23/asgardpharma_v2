@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, keywords, name, type, image }) => {
     const defaultTitle = "Asgard Pharma | Fabless Biologics & Vaccine Manufacturing";
     const defaultDescription = "Asgard Pharmaceuticals Inc. - Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.";
-    const defaultKeywords = "Biologics, Vaccines, Manufacturing, Pharma, Canada, Vancouver, Fabless";
+    const defaultKeywords = "Biologics, Vaccines, Manufacturing, Pharma, Canada, Edmonton, Fabless";
     const defaultImage = ""; // Add a default OG image URL if available later
     const siteUrl = "https://asgardpharma.ca"; // Replace with actual URL
 
