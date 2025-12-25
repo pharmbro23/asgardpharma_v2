@@ -15,7 +15,7 @@ const Hero = () => {
                     poster="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2011&auto=format&fit=crop"
                 >
                     {/* Local video file */}
-                    <source src="/assets/video/background.mp4" type="video/mp4" />
+                    <source src="/assets/video/BGV.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
