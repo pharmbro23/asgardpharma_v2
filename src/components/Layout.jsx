@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, navItems = [] }) => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -19,18 +19,18 @@ const Layout = ({ children }) => {
                     }`}
             >
                 <div className="container mx-auto px-8 flex items-center justify-between">
-                    <a href="#" className="text-2xl font-bold tracking-[0.2em] text-text-main uppercase">
+                    <a href="#overview" className="text-2xl font-bold tracking-[0.2em] text-text-main uppercase">
                         Asgard
                     </a>
 
                     <nav className="hidden md:flex space-x-12">
-                        {['Overview', 'Problem', 'Solution', 'Contact'].map((item) => (
+                        {navItems.map((item) => (
                             <a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
+                                key={item.id}
+                                href={item.href}
                                 className="text-xs font-bold uppercase tracking-[0.15em] text-text-main/80 hover:text-accent transition-colors"
                             >
-                                {item}
+                                {item.label}
                             </a>
                         ))}
                     </nav>
