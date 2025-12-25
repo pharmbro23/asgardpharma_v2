@@ -25,8 +25,8 @@ const Hero = () => {
                     <div className="max-w-4xl">
                         {/* Blurred background container */}
                         <div className="backdrop-blur-md bg-white/30 rounded-3xl p-12 shadow-2xl">
-                            <h1 className="text-5xl md:text-7xl font-bold text-text-main tracking-tighter mb-6 leading-[0.9]">
-                                FABLESS BIOLOGICS & <br />
+                            <h1 className="text-4xl md:text-6xl font-bold text-text-main tracking-tighter mb-6 leading-[0.9]">
+                                FABLESS BIOLOGICS &<br />
                                 VACCINE MANUFACTURING
                             </h1>
                             <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-12">
