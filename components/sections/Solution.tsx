@@ -31,7 +31,7 @@ export function Solution() {
               title={card.title}
               description={card.description}
               backDescription={card.backDescription}
-              className="h-64 md:h-80"
+              className="h-52 md:h-80"
             />
           ))}
         </div>

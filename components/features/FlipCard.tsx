@@ -56,25 +56,25 @@ export function FlipCard({
     <div className={cn('group [perspective:1000px] w-full cursor-pointer', className)}>
       <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Side */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white rounded-xl p-8 flex flex-col items-center justify-center text-center border border-black/5 shadow-lg">
-          <div className="mb-6 text-accent">{icon}</div>
-          <h3 className="text-xl md:text-2xl font-bold text-text-main tracking-tight mb-4 uppercase">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white rounded-xl p-4 md:p-8 flex flex-col items-center justify-center text-center border border-black/5 shadow-lg overflow-hidden">
+          <div className="mb-3 md:mb-6 text-accent">{icon}</div>
+          <h3 className="text-base md:text-2xl font-bold text-text-main tracking-tight mb-2 md:mb-4 uppercase">
             {title}
           </h3>
-          <p className="text-text-muted text-sm leading-relaxed">
+          <p className="text-text-muted text-xs md:text-sm leading-relaxed">
             {description}
           </p>
         </div>
 
         {/* Back Side */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-text-main rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg">
-          <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-4 uppercase">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-text-main rounded-xl p-4 md:p-8 flex flex-col items-center justify-center text-center shadow-lg overflow-hidden">
+          <h3 className="text-base md:text-2xl font-bold text-white tracking-tight mb-2 md:mb-4 uppercase">
             {backTitle || title}
           </h3>
-          <p className="text-white/80 text-sm leading-relaxed">
+          <p className="text-white/80 text-xs md:text-sm leading-relaxed">
             {backDescription}
           </p>
-          <div className="mt-6 w-12 h-1 bg-accent rounded-full" />
+          <div className="mt-3 md:mt-6 w-12 h-1 bg-accent rounded-full" />
         </div>
       </div>
     </div>
