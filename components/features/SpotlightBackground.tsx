@@ -29,11 +29,15 @@ export function SpotlightBackground({ children, className }: SpotlightBackground
 
     if (rafRef.current) return // Skip if a frame is already scheduled
 
+    const target = e.currentTarget
+    const clientX = e.clientX
+    const clientY = e.clientY
+
     rafRef.current = requestAnimationFrame(() => {
-      const rect = e.currentTarget.getBoundingClientRect()
+      const rect = target.getBoundingClientRect()
       setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
       })
       rafRef.current = null
     })
