@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description: 'Asgard Pharmaceuticals Inc. - Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.',
   keywords: ['pharmaceuticals', 'biologics', 'vaccine manufacturing', 'Canada', 'healthcare'],
   authors: [{ name: 'Asgard Pharmaceuticals Inc.' }],
+  icons: {
+    icon: '/logo.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_CA',
