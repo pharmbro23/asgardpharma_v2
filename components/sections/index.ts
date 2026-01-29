@@ -1,0 +1,7 @@
+export { Hero } from './Hero'
+export { Mission } from './Mission'
+export { History } from './History'
+export { Challenge } from './Challenge'
+export { Solution } from './Solution'
+export { WhyAsgard } from './WhyAsgard'
+export { Contact } from './Contact'

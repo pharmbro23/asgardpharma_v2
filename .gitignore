@@ -1,3 +1,14 @@
+# Dependencies
+node_modules
+
+# Next.js
+.next
+out
+
+# Build
+dist
+dist-ssr
+
 # Logs
 logs
 *.log
@@ -7,9 +18,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Local
 *.local
 
 # Editor directories and files
@@ -22,3 +31,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Testing
+/test-results/
+/playwright-report/
+
+# Vercel
+.vercel
