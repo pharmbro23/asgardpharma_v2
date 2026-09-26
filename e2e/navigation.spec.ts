@@ -1,8 +1,18 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Navigation', () => {
-  test('should navigate to all sections via nav links', async ({ page }) => {
+  test('should link to every venture from the ventures menu', async ({ page }) => {
     await page.goto('/')
+
+    await page.getByRole('button', { name: 'Ventures' }).click()
+    const menu = page.locator('#ventures-menu')
+    await expect(menu.getByRole('link', { name: /Pharmaceutical Development/ })).toHaveAttribute('href', '/pharma/')
+    await expect(menu.getByRole('link', { name: /Endpoint/ })).toHaveAttribute('href', '/endpoint/')
+    await expect(menu.getByRole('link', { name: /Pillai/ })).toHaveAttribute('href', '/pillai/')
+  })
+
+  test('should navigate to all pharma sections via nav links', async ({ page }) => {
+    await page.goto('/pharma/')
 
     // Check header is visible
     await expect(page.locator('header')).toBeVisible()
@@ -30,7 +40,7 @@ test.describe('Navigation', () => {
 
   test('should show mobile menu on small screens', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
-    await page.goto('/')
+    await page.goto('/pharma/')
 
     // Mobile menu button should be visible
     const menuButton = page.getByRole('button', { name: /open menu/i })

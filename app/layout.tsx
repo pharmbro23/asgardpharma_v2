@@ -6,10 +6,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Asgard Pharma | Fabless Biologics & Vaccine Manufacturing',
-    template: '%s | Asgard Pharma',
+    default: 'Asgard | Ventures in Life Sciences',
+    template: '%s | Asgard',
   },
-  description: 'Asgard Pharmaceuticals Inc. - Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.',
+  description: 'Asgard builds focused ventures that change how medicines are made, valued and delivered.',
   keywords: ['pharmaceuticals', 'biologics', 'vaccine manufacturing', 'Canada', 'healthcare'],
   authors: [{ name: 'Asgard Pharmaceuticals Inc.' }],
   icons: {
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     url: 'https://asgardpharma.ca',
     siteName: 'Asgard Pharma',
-    title: 'Asgard Pharma | Fabless Biologics & Vaccine Manufacturing',
-    description: 'Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.',
+    title: 'Asgard | Ventures in Life Sciences',
+    description: 'Asgard builds focused ventures that change how medicines are made, valued and delivered.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Asgard Pharma | Fabless Biologics & Vaccine Manufacturing',
-    description: 'Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.',
+    title: 'Asgard | Ventures in Life Sciences',
+    description: 'Asgard builds focused ventures that change how medicines are made, valued and delivered.',
   },
   robots: {
     index: true,

@@ -7,16 +7,25 @@ import { Button } from '@/components/ui/Button'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { contactContent } from '@/content/site-content'
 
-export function Contact() {
+interface ContactProps {
+  content?: {
+    eyebrow: string
+    heading: string
+    description: string
+    ctaText: string
+  }
+}
+
+export function Contact({ content = contactContent }: ContactProps) {
   const mailto = `mailto:${contactContent.email}`
 
   return (
     <Section id="contact" variant="light">
       <AnimatedSection className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-end">
         <div className="lg:col-span-7">
-          <Eyebrow className="mb-8">{contactContent.eyebrow}</Eyebrow>
+          <Eyebrow className="mb-8">{content.eyebrow}</Eyebrow>
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter leading-[0.9] text-text-main mb-10">
-            {contactContent.heading}
+            {content.heading}
           </h2>
           <a
             href={mailto}
@@ -27,9 +36,9 @@ export function Contact() {
           </a>
         </div>
         <div className="lg:col-span-5">
-          <p className="text-lg text-text-muted leading-relaxed mb-10">{contactContent.description}</p>
+          <p className="text-lg text-text-muted leading-relaxed mb-10">{content.description}</p>
           <Button href={mailto} variant="primary">
-            {contactContent.ctaText}
+            {content.ctaText}
           </Button>
         </div>
       </AnimatedSection>

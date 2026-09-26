@@ -2,13 +2,26 @@
 
 import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, ArrowRight } from 'lucide-react'
-import { heroContent } from '@/content/site-content'
+import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const
 
-export function Hero() {
+interface HeroContent {
+  eyebrow: string
+  headline: string[]
+  subtext: string
+  primaryCta: { text: string; href: string }
+  secondaryCta: { text: string; href: string }
+}
+
+interface HeroProps {
+  content: HeroContent
+  // Strip pinned to the bottom of the hero (key figures, venture links, etc.)
+  children?: React.ReactNode
+}
+
+export function Hero({ content: heroContent, children }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
@@ -111,31 +124,31 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Key figures */}
-      <motion.div
-        className="relative z-10 px-8 pb-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-      >
-        <ul className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-3 border-t border-text-main/15">
-          {heroContent.stats.map((stat) => (
-            <li key={stat.value} className="pt-6 pb-2 sm:pr-8 flex sm:block items-baseline gap-4">
-              <p className="text-3xl md:text-4xl font-bold tracking-tighter text-text-main sm:mb-2 min-w-[5rem]">
-                {stat.value}
-              </p>
-              <p className="text-sm text-text-muted leading-snug max-w-[16rem]">{stat.label}</p>
-            </li>
-          ))}
-        </ul>
-        <a
-          href="#overview"
-          className="hidden md:flex absolute right-8 lg:right-[max(2rem,calc((100vw-80rem)/2+2rem))] -top-12 items-center gap-2 text-[10px] font-bold uppercase tracking-nav text-text-muted hover:text-text-main transition-colors"
-          aria-label="Scroll to mission"
+      {children && (
+        <motion.div
+          className="relative z-10 px-8 pb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
-          Scroll <ArrowDown size={12} className="animate-bounce" />
-        </a>
-      </motion.div>
+          <div className="mx-auto max-w-7xl">{children}</div>
+        </motion.div>
+      )}
     </section>
+  )
+}
+
+export function HeroStats({ stats }: { stats: { value: string; label: string }[] }) {
+  return (
+    <ul className="grid grid-cols-1 sm:grid-cols-3 border-t border-text-main/15">
+      {stats.map((stat) => (
+        <li key={stat.value} className="pt-6 pb-2 sm:pr-8 flex sm:block items-baseline gap-4">
+          <p className="text-3xl md:text-4xl font-bold tracking-tighter text-text-main sm:mb-2 min-w-[5rem]">
+            {stat.value}
+          </p>
+          <p className="text-sm text-text-muted leading-snug max-w-[16rem]">{stat.label}</p>
+        </li>
+      ))}
+    </ul>
   )
 }

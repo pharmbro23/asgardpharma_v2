@@ -1,7 +1,96 @@
 import type { NavItem } from '@/types'
 
-// Navigation items
-export const navItems: NavItem[] = [
+// Ventures (header dropdown, homepage cards, footer)
+export type VentureStatus = 'Active' | 'Coming soon' | 'In development'
+
+export interface Venture {
+  slug: string
+  name: string
+  href: string
+  category: string
+  description: string
+  status: VentureStatus
+}
+
+export const ventures: Venture[] = [
+  {
+    slug: 'pharma',
+    name: 'Pharmaceutical Development',
+    href: '/pharma/',
+    category: 'Fabless biologics & vaccines',
+    description: 'Licensing proven global innovations and manufacturing them in Canadian facilities to make biologics and vaccines affordable.',
+    status: 'Active',
+  },
+  {
+    slug: 'endpoint',
+    name: 'Endpoint',
+    href: '/endpoint/',
+    category: 'Biotechnology prediction market',
+    description: 'A prediction market for biotech: forecast trial readouts, approvals and the milestones that move the industry.',
+    status: 'Coming soon',
+  },
+  {
+    slug: 'pillai',
+    name: 'Pillai',
+    href: '/pillai/',
+    category: 'New product',
+    description: 'A new product from Asgard, currently in development. Details coming soon.',
+    status: 'In development',
+  },
+]
+
+// Homepage navigation (links work from any page)
+export const homeNavItems: NavItem[] = [
+  { label: 'About', href: '/#about', id: 'about' },
+  { label: 'Contact', href: '/#contact', id: 'contact' },
+]
+
+// Homepage content
+export const homeContent = {
+  hero: {
+    eyebrow: 'Asgard — Canada',
+    headline: ["Building what's", 'next in life', 'sciences'],
+    subtext: 'Asgard builds focused ventures that change how medicines are made, valued and delivered.',
+    primaryCta: { text: 'Explore our ventures', href: '#ventures' },
+    secondaryCta: { text: 'Get in touch', href: '#contact' },
+  },
+  ventures: {
+    eyebrow: 'Our ventures',
+    heading: 'One company. Several ventures.',
+    intro: 'Each Asgard venture takes on a structural problem in life sciences, with its own team, model and mission.',
+  },
+  about: {
+    eyebrow: 'About Asgard',
+    statement: {
+      prefix: 'We start where the system is broken and build',
+      accent: 'practical, Canadian-made',
+      suffix: 'alternatives.',
+    },
+    principles: [
+      {
+        title: 'Built in Canada',
+        description: 'Every venture starts from Canadian talent, infrastructure and institutions, and aims to strengthen them.',
+      },
+      {
+        title: 'Public benefit',
+        description: 'We look for problems where a better model can lower costs for patients and the public, not just shareholders.',
+      },
+      {
+        title: 'Evidence first',
+        description: 'We favour rigorous science and transparent data over hype, in the lab and in the market.',
+      },
+    ],
+  },
+  contact: {
+    eyebrow: 'Contact',
+    heading: "Let's build together",
+    description: "Partners, investors, researchers and early users: whichever venture brought you here, we'd love to hear from you.",
+    ctaText: 'Contact Us',
+  },
+}
+
+// Pharmaceutical Development page navigation
+export const pharmaNavItems: NavItem[] = [
   { label: 'Mission', href: '#overview', id: 'overview' },
   { label: 'History', href: '#history', id: 'history' },
   { label: 'Problem', href: '#problem', id: 'problem' },
@@ -210,5 +299,5 @@ export const contactContent = {
 // Footer content
 export const footerContent = {
   company: 'Asgard Pharmaceuticals Inc.',
-  tagline: 'Fabless biologics & vaccine manufacturing for Canada.',
+  tagline: 'Building ventures that change how medicines are made, valued and delivered.',
 }
