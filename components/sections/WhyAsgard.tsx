@@ -1,7 +1,8 @@
 'use client'
 
 import { Section } from '@/components/ui/Section'
-import { Card } from '@/components/ui/Card'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { AnimatedSection, AnimatedStagger, AnimatedItem } from '@/components/ui/AnimatedSection'
 import { SpotlightBackground } from '@/components/features/SpotlightBackground'
 import { whyAsgardContent } from '@/content/site-content'
 
@@ -18,23 +19,26 @@ function HighlightText({ text, accentPhrase }: { text: string; accentPhrase: str
 
 export function WhyAsgard() {
   return (
-    <SpotlightBackground>
-      <Section variant="gray">
-        <div className="text-center mb-16">
-          <p className="text-xl md:text-2xl text-text-muted max-w-3xl mx-auto leading-relaxed italic">
-            &ldquo;{whyAsgardContent.intro}&rdquo;
-          </p>
-        </div>
+    <SpotlightBackground className="bg-text-main">
+      <Section variant="dark" className="bg-transparent">
+        <AnimatedSection className="max-w-5xl">
+          <Eyebrow className="mb-10">{whyAsgardContent.eyebrow}</Eyebrow>
+          <blockquote className="text-3xl md:text-5xl font-light tracking-tight leading-[1.15] text-bg-main">
+            <span className="text-accent font-bold" aria-hidden="true">&ldquo;</span>
+            {whyAsgardContent.intro}
+            <span className="text-accent font-bold" aria-hidden="true">&rdquo;</span>
+          </blockquote>
+        </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {whyAsgardContent.cards.map((card, index) => (
-            <Card key={index} className="p-8 md:p-10 text-center">
-              <p className="text-lg md:text-xl text-text-main leading-relaxed">
-                <HighlightText text={card.text} accentPhrase={card.accentPhrase} />
+        <AnimatedStagger className="grid md:grid-cols-2 gap-12 md:gap-16 mt-20 md:mt-28">
+          {whyAsgardContent.beliefs.map((belief) => (
+            <AnimatedItem key={belief.accentPhrase} className="border-t border-bg-main/20 pt-8">
+              <p className="text-lg md:text-xl text-bg-main/80 leading-relaxed">
+                <HighlightText text={belief.text} accentPhrase={belief.accentPhrase} />
               </p>
-            </Card>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedStagger>
       </Section>
     </SpotlightBackground>
   )

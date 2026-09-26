@@ -2,26 +2,36 @@ import type { NavItem } from '@/types'
 
 // Navigation items
 export const navItems: NavItem[] = [
-  { label: 'Overview', href: '#overview', id: 'overview' },
+  { label: 'Mission', href: '#overview', id: 'overview' },
   { label: 'History', href: '#history', id: 'history' },
   { label: 'Problem', href: '#problem', id: 'problem' },
-  { label: 'Solution', href: '#solution', id: 'solution' },
+  { label: 'Model', href: '#solution', id: 'solution' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ]
 
 // Hero section content
 export const heroContent = {
-  headline: 'FABLESS BIOLOGICS & VACCINE MANUFACTURING',
+  eyebrow: 'Asgard Pharmaceuticals Inc. — Canada',
+  headline: ['Fabless biologics', '& vaccine', 'manufacturing'],
   subtext: 'Producing affordable pharmaceuticals through global innovation and Canadian infrastructure.',
-  ctaText: 'Get in Touch',
-  ctaHref: '#contact',
+  primaryCta: { text: 'Partner with us', href: '#contact' },
+  secondaryCta: { text: 'Our model', href: '#solution' },
+  stats: [
+    { value: '1914', label: 'Connaught Labs founded as a public, not-for-profit vaccine maker' },
+    { value: '$126M', label: 'Federal investment in the Biologics Manufacturing Centre' },
+    { value: '1', label: 'Confirmed partner using that capacity today' },
+  ],
 }
 
 // Overview/Mission section content
 export const missionContent = {
-  title: 'OUR MISSION',
-  subtitle: 'To produce affordable pharmaceuticals by licensing global innovations and utilizing Canadian biomanufacturing infrastructure.',
-  cards: [
+  eyebrow: 'Our mission',
+  statement: {
+    prefix: 'To produce',
+    accent: 'affordable pharmaceuticals',
+    suffix: 'by licensing global innovations and utilizing Canadian biomanufacturing infrastructure.',
+  },
+  pillars: [
     {
       title: 'Affordability',
       description: 'We aim to challenge the dominance of US "Big Pharma" by reducing the burden of high cost vaccines & biologics on the Canadian taxpayer through leveraging domestic manufacturing capabilities.',
@@ -34,114 +44,149 @@ export const missionContent = {
 }
 
 // History section content
-export interface HistoryBullet {
+export interface TimelineEntry {
+  year: string
+  title: string
   text: string
-  highlights: string[]
 }
 
 export const historyContent = {
+  eyebrow: 'History',
   heading: {
     prefix: 'Canada was',
     accent: 'once a leader',
     suffix: 'in public vaccine manufacturing',
   },
-  bullets: [
+  timeline: [
     {
-      text: 'In 1914, Connaught Labs produced antitoxins as a public, not-for-profit institute tied to the University of Toronto.',
-      highlights: ['public, not-for-profit institute'],
+      year: '1914',
+      title: 'A public leader',
+      text: 'Connaught Labs produces antitoxins as a public, not-for-profit institute tied to the University of Toronto.',
     },
     {
-      text: 'But by the 1990s, privatization and foreign acquisitions (Connaught → Sanofi, Armand Frappier → GSK) dismantled our domestic capacity, leaving Canada exposed during COVID 19.',
-      highlights: ['privatization and foreign acquisitions', 'exposed'],
+      year: '1990s',
+      title: 'Sold off',
+      text: 'Privatization and foreign acquisitions (Connaught → Sanofi, Armand Frappier → GSK) dismantle our domestic capacity.',
     },
     {
-      text: 'In response, the federal government invested $126 million in the Biologics Manufacturing Centre (BMC) — which today remains underutilized, with only one confirmed partner.',
-      highlights: ['remains underutilized'],
+      year: '2020',
+      title: 'Exposed',
+      text: 'COVID-19 reveals that Canada can no longer produce its own vaccines when it matters most.',
     },
-  ] as HistoryBullet[],
+    {
+      year: 'Today',
+      title: 'Underutilized',
+      text: 'The federal government invested $126 million in the Biologics Manufacturing Centre, which remains underutilized with only one confirmed partner.',
+    },
+  ] as TimelineEntry[],
   images: [
-    '/assets/images/history-connaught-vials.webp',
-    '/assets/images/history-scientist.webp',
-    '/assets/images/history-map.webp',
-    '/assets/images/history-building.webp',
+    { src: '/assets/images/history-connaught-vials.webp', blurKey: 'history-connaught-vials', alt: 'Connaught Laboratories vials' },
+    { src: '/assets/images/history-scientist.webp', blurKey: 'history-scientist', alt: 'Scientist at Connaught Laboratories' },
+    { src: '/assets/images/history-map.webp', blurKey: 'history-map', alt: 'Connaught Antitoxin Laboratories distribution map' },
+    { src: '/assets/images/history-building.webp', blurKey: 'history-building', alt: 'Connaught Medical Research Laboratories campus' },
   ],
 }
 
-// Icon keys for flip cards
+// Icon keys for problem and solution items
 export type IconKey = 'cost' | 'sovereignty' | 'supply' | 'bottleneck' | 'rebuild' | 'capacity' | 'slash' | 'gouging'
 
-export interface FlipCardData {
+export interface FeatureItem {
   iconKey: IconKey
   title: string
   description: string
-  backDescription: string
 }
 
-// Problem/Challenge section flip cards
-export const problemCards: FlipCardData[] = [
-  {
-    iconKey: 'cost',
-    title: 'Cost',
-    description: 'High out-of-pocket costs',
-    backDescription: 'Even with public and private coverage, patients still pay high out-of-pocket costs—while taxpayers foot inflated bills driven by pharma pricing power.',
+// Problem section content
+export const problemContent = {
+  eyebrow: 'The problem',
+  heading: 'Canadians pay more, and control less.',
+  items: [
+    {
+      iconKey: 'cost',
+      title: 'Cost',
+      description: 'Even with public and private coverage, patients still pay high out-of-pocket costs, while taxpayers foot inflated bills driven by pharma pricing power.',
+    },
+    {
+      iconKey: 'sovereignty',
+      title: 'Fragile health sovereignty',
+      description: 'Canada relies on foreign pharma giants, with little control over supply, pricing, or production.',
+    },
+    {
+      iconKey: 'supply',
+      title: 'Vulnerable supply chains',
+      description: 'Pandemics and geopolitics have exposed our inability to produce critical medicines when it matters most.',
+    },
+    {
+      iconKey: 'bottleneck',
+      title: 'Innovation bottleneck',
+      description: 'Cutting-edge therapies abroad are delayed or unavailable in Canada due to lack of domestic licensing and trial pathways.',
+    },
+  ] as FeatureItem[],
+  feature: {
+    image: '/assets/images/challenge.webp',
+    alt: 'The Biologics Manufacturing Centre',
+    value: '$126M',
+    caption: 'of public manufacturing capacity, with one confirmed partner.',
   },
-  {
-    iconKey: 'sovereignty',
-    title: 'Fragile Health Sovereignty',
-    description: 'Reliance on foreign giants',
-    backDescription: 'Canada relies on foreign pharma giants, with little control over supply, pricing, or production.',
-  },
-  {
-    iconKey: 'supply',
-    title: 'Vulnerable Supply Chains',
-    description: 'Exposed inability to produce',
-    backDescription: 'Pandemics and geopolitics have exposed our inability to produce critical medicines when it matters most.',
-  },
-  {
-    iconKey: 'bottleneck',
-    title: 'Innovation Bottleneck',
-    description: 'Delayed therapies',
-    backDescription: 'Cutting-edge therapies abroad are delayed or unavailable in Canada due to lack of domestic licensing and trial pathways.',
-  },
-]
+}
 
-// Solution section flip cards
-export const solutionCards: FlipCardData[] = [
-  {
-    iconKey: 'rebuild',
-    title: 'Rebuild Domestic Biotech',
-    description: 'Resilient domestic pipeline',
-    backDescription: 'License late-phase global innovations and invest in Canadian-led development and commercialization, building a resilient domestic pipeline.',
-  },
-  {
-    iconKey: 'capacity',
-    title: 'Deploy Idle Capacity',
-    description: 'Untapped national capacity',
-    backDescription: 'Facilities like the Biologics Manufacturing Centre (BMC) represent untapped national capacity.',
-  },
-  {
-    iconKey: 'slash',
-    title: 'Slash Costs',
-    description: 'Affordable biologics',
-    backDescription: 'Avoid traditional R&D overhead and global distribution markups to offer affordable, locally made biologics for both patients and healthcare systems.',
-  },
-  {
-    iconKey: 'gouging',
-    title: 'Eliminate Price Gouging',
-    description: 'Minimize excessive markups',
-    backDescription: 'Minimizing cost allows minimizing excessive markups to patients while still offering high-quality medicines.',
-  },
-]
+// Solution / model section content
+export const modelContent = {
+  eyebrow: 'Our model',
+  heading: 'Fabless, by design.',
+  intro: "Like a fabless chipmaker, we don't build factories. We bring proven science to Canada and put existing public infrastructure to work.",
+  steps: [
+    {
+      number: '01',
+      title: 'License',
+      text: 'Late-phase global innovations, licensed for Canadian development and commercialization.',
+    },
+    {
+      number: '02',
+      title: 'Manufacture',
+      text: 'Produced in idle domestic facilities like the Biologics Manufacturing Centre.',
+    },
+    {
+      number: '03',
+      title: 'Deliver',
+      text: 'Affordable, locally made biologics for patients and healthcare systems.',
+    },
+  ],
+  outcomes: [
+    {
+      iconKey: 'rebuild',
+      title: 'Rebuild domestic biotech',
+      description: 'License late-phase global innovations and invest in Canadian-led development and commercialization, building a resilient domestic pipeline.',
+    },
+    {
+      iconKey: 'capacity',
+      title: 'Deploy idle capacity',
+      description: 'Facilities like the Biologics Manufacturing Centre (BMC) represent untapped national capacity.',
+    },
+    {
+      iconKey: 'slash',
+      title: 'Slash costs',
+      description: 'Avoid traditional R&D overhead and global distribution markups to offer affordable, locally made biologics.',
+    },
+    {
+      iconKey: 'gouging',
+      title: 'Eliminate price gouging',
+      description: 'Minimizing cost allows minimizing excessive markups to patients while still offering high-quality medicines.',
+    },
+  ] as FeatureItem[],
+  image: { src: '/assets/images/solution.webp', alt: 'Pipette dispensing into sample vials in a laboratory' },
+}
 
 // Why Asgard section content
-export interface WhyAsgardCard {
+export interface Belief {
   text: string
   accentPhrase: string
 }
 
 export const whyAsgardContent = {
-  intro: "If drug development is supported by taxpayer dollars, then the public deserves access to its rewards—not just private shareholders.",
-  cards: [
+  eyebrow: 'What we believe',
+  intro: 'If drug development is supported by taxpayer dollars, then the public deserves access to its rewards—not just private shareholders.',
+  beliefs: [
     {
       text: 'We believe that public funding should yield public returns.',
       accentPhrase: 'public returns',
@@ -150,13 +195,14 @@ export const whyAsgardContent = {
       text: 'We believe in a resilient, self-sufficient Canadian pharmaceutical system, free of foreign interference, ready for pandemics and supply chain shocks.',
       accentPhrase: 'resilient, self-sufficient',
     },
-  ] as WhyAsgardCard[],
+  ] as Belief[],
 }
 
 // Contact section content
 export const contactContent = {
-  heading: 'JOIN THE MISSION',
-  description: "Interested in partnering with Asgard Pharma? We'd love to hear from you.",
+  eyebrow: 'Contact',
+  heading: 'Join the mission',
+  description: "Whether you hold promising IP, operate manufacturing capacity, or share our vision for Canadian health sovereignty, we'd love to hear from you.",
   email: 'info@asgardpharma.ca',
   ctaText: 'Contact Us',
 }
@@ -164,8 +210,5 @@ export const contactContent = {
 // Footer content
 export const footerContent = {
   company: 'Asgard Pharmaceuticals Inc.',
-  socialLinks: [
-    { label: 'LinkedIn', href: '#', icon: 'linkedin' },
-    { label: 'Twitter', href: '#', icon: 'twitter' },
-  ],
+  tagline: 'Fabless biologics & vaccine manufacturing for Canada.',
 }

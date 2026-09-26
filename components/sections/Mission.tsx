@@ -1,33 +1,35 @@
 'use client'
 
 import { Section } from '@/components/ui/Section'
-import { Card } from '@/components/ui/Card'
+import { Eyebrow } from '@/components/ui/Eyebrow'
 import { AnimatedSection, AnimatedStagger, AnimatedItem } from '@/components/ui/AnimatedSection'
 import { missionContent } from '@/content/site-content'
 
 export function Mission() {
+  const { statement } = missionContent
+
   return (
     <Section id="overview" variant="light">
-      <AnimatedSection className="text-center mb-16">
-        <h2 className="text-xs font-bold uppercase tracking-nav text-accent mb-4">
-          {missionContent.title}
+      <AnimatedSection>
+        <Eyebrow className="mb-10">{missionContent.eyebrow}</Eyebrow>
+        <h2 className="text-3xl md:text-5xl font-light text-text-main tracking-tight leading-[1.15] max-w-5xl mb-20 md:mb-28">
+          {statement.prefix} <span className="font-bold text-accent">{statement.accent}</span>{' '}
+          {statement.suffix}
         </h2>
-        <p className="text-2xl md:text-3xl font-light text-text-main max-w-4xl mx-auto leading-relaxed">
-          {missionContent.subtitle}
-        </p>
       </AnimatedSection>
 
-      <AnimatedStagger className="grid md:grid-cols-2 gap-8">
-        {missionContent.cards.map((card, index) => (
-          <AnimatedItem key={index}>
-            <Card className="p-8 md:p-10 h-full">
-              <h3 className="text-xl font-bold text-text-main mb-4">
-                {card.title}
+      <AnimatedStagger className="grid md:grid-cols-2 gap-12 md:gap-16">
+        {missionContent.pillars.map((pillar, index) => (
+          <AnimatedItem key={pillar.title} className="border-t border-text-main/15 pt-8">
+            <div className="flex items-baseline gap-6 mb-4">
+              <span className="text-xs font-bold tracking-nav text-accent">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-text-main">
+                {pillar.title}
               </h3>
-              <p className="text-text-muted leading-relaxed">
-                {card.description}
-              </p>
-            </Card>
+            </div>
+            <p className="text-text-muted leading-relaxed md:pl-12">{pillar.description}</p>
           </AnimatedItem>
         ))}
       </AnimatedStagger>

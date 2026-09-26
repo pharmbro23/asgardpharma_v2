@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { navItems } from '@/content/site-content'
+import { navItems, contactContent } from '@/content/site-content'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -85,13 +86,14 @@ export function Header() {
         {/* Logo */}
         <a
           href="#"
-          className="text-2xl font-bold tracking-logo text-text-main uppercase"
+          className="flex items-center gap-3 text-2xl font-bold tracking-logo text-text-main uppercase"
         >
+          <Image src="/logo.svg" alt="" width={32} height={32} className="w-8 h-8" priority />
           Asgard
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-12">
+        <nav className="hidden md:flex items-center space-x-10 lg:space-x-12">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -106,6 +108,12 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          <a
+            href={`mailto:${contactContent.email}`}
+            className="hidden lg:inline-flex px-5 py-3 border border-text-main text-xs font-bold uppercase tracking-nav text-text-main hover:bg-text-main hover:text-bg-main transition-colors"
+          >
+            Get in touch
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}

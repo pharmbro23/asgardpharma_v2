@@ -1,72 +1,85 @@
+'use client'
+
 import Image from 'next/image'
 import { Section } from '@/components/ui/Section'
+import { Eyebrow } from '@/components/ui/Eyebrow'
+import { AnimatedSection, AnimatedStagger, AnimatedItem } from '@/components/ui/AnimatedSection'
 import { historyContent } from '@/content/site-content'
 import blurData from '@/lib/blur-data.json'
 
-function HighlightText({ text, highlights }: { text: string; highlights: string[] }) {
-  let result = text
-  highlights.forEach((phrase) => {
-    result = result.replace(
-      phrase,
-      `<strong class="text-bg-main font-semibold">${phrase}</strong>`
-    )
-  })
-  return <span dangerouslySetInnerHTML={{ __html: result }} />
-}
-
 const blurMap: Record<string, string> = blurData
 
-const imageBlurKeys = [
-  'history-connaught-vials',
-  'history-scientist',
-  'history-map',
-  'history-building',
-]
-
 export function History() {
+  const { heading } = historyContent
+
   return (
     <Section id="history" variant="dark">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        {/* Text Content */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-bg-main mb-12 leading-tight">
-            {historyContent.heading.prefix}{' '}
-            <span className="text-accent">{historyContent.heading.accent}</span>{' '}
-            {historyContent.heading.suffix}
+      <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end mb-20">
+        <AnimatedSection className="lg:col-span-6">
+          <Eyebrow className="mb-8">{historyContent.eyebrow}</Eyebrow>
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.95] text-bg-main">
+            {heading.prefix} <span className="text-accent">{heading.accent}</span> {heading.suffix}
           </h2>
+        </AnimatedSection>
 
-          <ul className="space-y-8">
-            {historyContent.bullets.map((bullet, index) => (
-              <li key={index} className="flex gap-4">
-                <span className="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-accent" />
-                <p className="text-bg-main/80 leading-relaxed">
-                  <HighlightText text={bullet.text} highlights={bullet.highlights} />
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Image Grid */}
-        <div className="grid grid-cols-2 gap-4">
-          {historyContent.images.map((src, index) => (
-            <div
-              key={index}
-              className="relative aspect-square overflow-hidden rounded-2xl group"
+        {/* Archival image strip */}
+        <AnimatedStagger className="lg:col-span-6 grid grid-cols-4 gap-2 md:gap-3">
+          {historyContent.images.map((image, index) => (
+            <AnimatedItem
+              key={image.src}
+              className={index % 2 === 0 ? 'lg:translate-y-6' : undefined}
             >
-              <Image
-                src={src}
-                alt={`History image ${index + 1}`}
-                fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 25vw"
-                placeholder="blur"
-                blurDataURL={blurMap[imageBlurKeys[index]]}
-              />
-            </div>
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg group">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  sizes="(max-width: 1024px) 25vw, 15vw"
+                  placeholder="blur"
+                  blurDataURL={blurMap[image.blurKey]}
+                />
+              </div>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedStagger>
       </div>
+
+      {/* Timeline */}
+      <AnimatedStagger className="grid md:grid-cols-4 relative">
+        {/* Horizontal rail (desktop) */}
+        <span className="hidden md:block absolute top-[7px] left-0 right-0 h-px bg-bg-main/20" aria-hidden="true" />
+        {historyContent.timeline.map((entry, index) => {
+          const isLast = index === historyContent.timeline.length - 1
+          return (
+            <AnimatedItem key={entry.year} className="relative pl-10 md:pl-0 md:pr-8 pb-12 md:pb-0">
+              {/* Vertical rail (mobile) */}
+              {!isLast && (
+                <span className="md:hidden absolute left-[7px] top-4 bottom-0 w-px bg-bg-main/20" aria-hidden="true" />
+              )}
+              <span
+                className={
+                  'absolute left-0 md:static block w-[15px] h-[15px] rounded-full border-2 md:mb-8 ' +
+                  (isLast ? 'bg-accent border-accent' : 'bg-text-main border-bg-main/60')
+                }
+                aria-hidden="true"
+              />
+              <p
+                className={
+                  'text-4xl md:text-5xl font-bold tracking-tighter mb-3 ' +
+                  (isLast ? 'text-accent' : 'text-bg-main')
+                }
+              >
+                {entry.year}
+              </p>
+              <h3 className="text-xs font-bold uppercase tracking-nav text-bg-main/60 mb-4">
+                {entry.title}
+              </h3>
+              <p className="text-bg-main/75 leading-relaxed text-sm md:text-base">{entry.text}</p>
+            </AnimatedItem>
+          )
+        })}
+      </AnimatedStagger>
     </Section>
   )
 }

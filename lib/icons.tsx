@@ -21,7 +21,7 @@ const iconMap = {
   gouging: Ban,
 } as const
 
-export function getIcon(key: IconKey, className?: string) {
+export function getIcon(key: IconKey, className?: string, size = 48) {
   const Icon = iconMap[key]
-  return <Icon className={className} size={48} strokeWidth={1.5} />
+  return <Icon className={className} size={size} strokeWidth={1.5} />
 }

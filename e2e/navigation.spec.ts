@@ -7,8 +7,8 @@ test.describe('Navigation', () => {
     // Check header is visible
     await expect(page.locator('header')).toBeVisible()
 
-    // Navigate to Overview section
-    await page.click('text=Overview')
+    // Navigate to Mission section
+    await page.click('text=Mission')
     await expect(page).toHaveURL(/#overview/)
 
     // Navigate to History section
@@ -19,8 +19,8 @@ test.describe('Navigation', () => {
     await page.click('text=Problem')
     await expect(page).toHaveURL(/#problem/)
 
-    // Navigate to Solution section
-    await page.click('text=Solution')
+    // Navigate to Model section
+    await page.click('text=Model')
     await expect(page).toHaveURL(/#solution/)
 
     // Navigate to Contact section
@@ -41,7 +41,7 @@ test.describe('Navigation', () => {
 
     // Menu items should be visible
     await expect(page.locator('#mobile-menu')).toBeVisible()
-    await expect(page.getByRole('link', { name: 'Overview' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Mission' })).toBeVisible()
   })
 })
 
