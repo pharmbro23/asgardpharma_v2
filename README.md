@@ -18,7 +18,7 @@ Asgard Pharmaceuticals Inc. is building a resilient Canadian pharmaceutical syst
 | Animation | Framer Motion |
 | Icons | Lucide React |
 | Testing | Vitest + React Testing Library, Playwright |
-| Deployment | Vercel |
+| Deployment | Porkbun Static Hosting (GitHub Actions builds `main` → `deploy` branch) |
 
 ## Getting Started
 
