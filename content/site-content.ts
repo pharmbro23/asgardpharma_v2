@@ -65,7 +65,6 @@ export const homeNavItems: NavItem[] = [
 // Homepage content
 export const homeContent = {
   hero: {
-    eyebrow: 'Asgard — Canada',
     headline: ["Building what's", 'next in life', 'sciences'],
     subtext: 'Asgard builds focused ventures that change how medicines are made, valued and delivered.',
     primaryCta: { text: 'Explore our ventures', href: '#ventures' },

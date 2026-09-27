@@ -9,7 +9,8 @@ import { cn } from '@/lib/utils'
 const ease = [0.21, 0.47, 0.32, 0.98] as const
 
 interface HeroContent {
-  eyebrow: string
+  // Omit for a plain accent rule above the headline
+  eyebrow?: string
   headline: string[]
   subtext: string
   primaryCta: { text: string; href: string }
@@ -94,7 +95,11 @@ export function Hero({ content: heroContent, children, video }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
           >
-            <Eyebrow className="mb-8">{heroContent.eyebrow}</Eyebrow>
+            {heroContent.eyebrow ? (
+              <Eyebrow className="mb-8">{heroContent.eyebrow}</Eyebrow>
+            ) : (
+              <span className="block w-16 h-px bg-accent mb-10" aria-hidden="true" />
+            )}
           </motion.div>
 
           <h1 className="text-[clamp(2rem,10vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-bold uppercase text-text-main tracking-tighter leading-[0.9] mb-10">
