@@ -13,6 +13,9 @@ const config: Config = {
         'accent': '#A8A09A',
         'text-main': '#1A1A1A',
         'text-muted': '#666666',
+        // Eir brand (sampled from the Eir logo)
+        'eir-green': '#1F5442',
+        'eir-gold': '#B08D57',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

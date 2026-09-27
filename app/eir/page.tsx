@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
-import { ComingSoon } from '@/components/sections'
-import { ventures } from '@/content/site-content'
-
-const venture = ventures.find((v) => v.slug === 'eir')!
+import { EirPage } from '@/components/ventures/eir/EirPage'
 
 export const metadata: Metadata = {
-  title: venture.name,
-  description: venture.description,
+  title: 'Eir: Private pill counting',
+  description:
+    'Eir counts tablets and capsules with an AI model that runs entirely on your phone. No uploads, no subscriptions, and no patient data leaving your pharmacy.',
 }
 
 export default function Eir() {
-  return <ComingSoon venture={venture} />
+  return <EirPage />
 }

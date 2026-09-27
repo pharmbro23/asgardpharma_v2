@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/ui/Logo'
 import { homeNavItems, pharmaNavItems, ventures, contactContent } from '@/content/site-content'
+import { eirNavItems } from '@/content/eir-content'
 
 export function Header() {
   const pathname = usePathname()
@@ -20,7 +21,8 @@ export function Header() {
 
   // Each venture page gets its own in-page section links
   const currentVenture = ventures.find((v) => pathname?.startsWith(v.href.replace(/\/$/, '')))
-  const navItems = currentVenture?.slug === 'pharma' ? pharmaNavItems : homeNavItems
+  const navItems =
+    currentVenture?.slug === 'pharma' ? pharmaNavItems : currentVenture?.slug === 'eir' ? eirNavItems : homeNavItems
 
   // Track scroll position for header styling
   useEffect(() => {

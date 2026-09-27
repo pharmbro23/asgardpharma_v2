@@ -45,8 +45,8 @@ export const ventures: Venture[] = [
     slug: 'eir',
     name: 'Eir',
     href: '/eir/',
-    category: 'Pill counting',
-    description: 'A pill counting product from Asgard, currently in development. Details coming soon.',
+    category: 'Private pill counting',
+    description: 'On-device pill counting for pharmacies: patient photos never leave the phone, it works offline, and it is a one-time purchase.',
     status: 'In development',
     logo: {
       wordmark: '/assets/ventures/eir/wordmark.png',
