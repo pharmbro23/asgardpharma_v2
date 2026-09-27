@@ -22,7 +22,7 @@ export function ComingSoon({ venture }: { venture: Venture }) {
                 width={1306}
                 height={314}
                 priority
-                className="w-full max-w-md md:max-w-xl h-auto -ml-[1.5%]"
+                className="w-auto h-auto max-w-full max-h-24 md:max-h-32"
               />
             </h1>
           ) : (
@@ -62,7 +62,7 @@ export function ComingSoon({ venture }: { venture: Venture }) {
             />
           ) : (
             <div className="relative aspect-square rounded-2xl overflow-hidden border border-text-main/5 shadow-sm">
-              <VentureVisual slug={venture.slug} />
+              <VentureVisual venture={venture} />
             </div>
           )}
         </div>

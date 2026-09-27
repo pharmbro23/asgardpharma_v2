@@ -32,7 +32,7 @@ export function Ventures() {
               className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-text-main/5 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
-                <VentureVisual slug={venture.slug} />
+                <VentureVisual venture={venture} />
               </div>
               <div className="flex flex-col flex-grow p-8">
                 <div className="flex items-center justify-between mb-6">

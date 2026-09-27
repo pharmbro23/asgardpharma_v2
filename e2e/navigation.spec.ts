@@ -8,7 +8,7 @@ test.describe('Navigation', () => {
     const menu = page.locator('#ventures-menu')
     await expect(menu.getByRole('link', { name: /Pharmaceutical Development/ })).toHaveAttribute('href', '/pharma/')
     await expect(menu.getByRole('link', { name: /Endpoint/ })).toHaveAttribute('href', '/endpoint/')
-    await expect(menu.getByRole('link', { name: /Pillai/ })).toHaveAttribute('href', '/pillai/')
+    await expect(menu.getByRole('link', { name: /Eir/ })).toHaveAttribute('href', '/eir/')
   })
 
   test('should navigate to all pharma sections via nav links', async ({ page }) => {

@@ -13,8 +13,9 @@ export interface Venture {
   // Brand assets for ventures that have their own identity
   logo?: {
     wordmark: string
-    wordmarkLight: string
     icon: string
+    // Artwork for the homepage card and the colour behind it
+    card: { src: string; background: 'dark' | 'light' }
   }
 }
 
@@ -36,17 +37,22 @@ export const ventures: Venture[] = [
     status: 'Coming soon',
     logo: {
       wordmark: '/assets/ventures/endpoint/wordmark.png',
-      wordmarkLight: '/assets/ventures/endpoint/wordmark-light.png',
       icon: '/assets/ventures/endpoint/icon.png',
+      card: { src: '/assets/ventures/endpoint/wordmark-light.png', background: 'dark' },
     },
   },
   {
-    slug: 'pillai',
-    name: 'Pillai',
-    href: '/pillai/',
-    category: 'New product',
-    description: 'A new product from Asgard, currently in development. Details coming soon.',
+    slug: 'eir',
+    name: 'Eir',
+    href: '/eir/',
+    category: 'Pill counting',
+    description: 'A pill counting product from Asgard, currently in development. Details coming soon.',
     status: 'In development',
+    logo: {
+      wordmark: '/assets/ventures/eir/wordmark.png',
+      icon: '/assets/ventures/eir/icon.png',
+      card: { src: '/assets/ventures/eir/logo.png', background: 'light' },
+    },
   },
 ]
 
