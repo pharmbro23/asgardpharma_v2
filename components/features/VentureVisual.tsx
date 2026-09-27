@@ -18,30 +18,15 @@ export function VentureVisual({ slug }: { slug: string }) {
   }
 
   if (slug === 'endpoint') {
-    // Stylized probability chart, evoking a prediction market
     return (
-      <div className="absolute inset-0 bg-text-main">
-        <svg viewBox="0 0 400 300" className="absolute inset-0 w-full h-full" preserveAspectRatio="none" aria-hidden="true">
-          {[60, 120, 180, 240].map((y) => (
-            <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="#F5F5F0" strokeOpacity="0.08" />
-          ))}
-          <path
-            d="M0 230 L40 215 L80 222 L120 190 L160 198 L200 160 L240 170 L280 120 L320 128 L360 92 L400 84 L400 300 L0 300 Z"
-            fill="#A8A09A"
-            fillOpacity="0.12"
-          />
-          <path
-            d="M0 230 L40 215 L80 222 L120 190 L160 198 L200 160 L240 170 L280 120 L320 128 L360 92 L400 84"
-            fill="none"
-            stroke="#A8A09A"
-            strokeWidth="2"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-        <div className="absolute top-6 right-6 text-right">
-          <p className="text-4xl font-bold tracking-tighter text-bg-main">72%</p>
-          <p className="text-[10px] font-bold uppercase tracking-nav text-bg-main/50">Sample market</p>
-        </div>
+      <div className="absolute inset-0 bg-text-main flex items-center justify-center">
+        <Image
+          src="/assets/ventures/endpoint/wordmark-light.png"
+          alt=""
+          width={1306}
+          height={314}
+          className="w-3/5 h-auto transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
     )
   }

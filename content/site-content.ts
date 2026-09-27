@@ -10,6 +10,12 @@ export interface Venture {
   category: string
   description: string
   status: VentureStatus
+  // Brand assets for ventures that have their own identity
+  logo?: {
+    wordmark: string
+    wordmarkLight: string
+    icon: string
+  }
 }
 
 export const ventures: Venture[] = [
@@ -28,6 +34,11 @@ export const ventures: Venture[] = [
     category: 'Biotechnology prediction market',
     description: 'A prediction market for biotech: forecast trial readouts, approvals and the milestones that move the industry.',
     status: 'Coming soon',
+    logo: {
+      wordmark: '/assets/ventures/endpoint/wordmark.png',
+      wordmarkLight: '/assets/ventures/endpoint/wordmark-light.png',
+      icon: '/assets/ventures/endpoint/icon.png',
+    },
   },
   {
     slug: 'pillai',

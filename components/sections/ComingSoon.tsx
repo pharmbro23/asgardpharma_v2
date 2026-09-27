@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -13,9 +14,22 @@ export function ComingSoon({ venture }: { venture: Venture }) {
           <Eyebrow className="mb-8">
             An Asgard venture · {venture.status}
           </Eyebrow>
-          <h1 className="text-[clamp(2.5rem,12vw,3.75rem)] md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] text-text-main mb-6">
-            {venture.name}
-          </h1>
+          {venture.logo ? (
+            <h1 className="mb-8">
+              <Image
+                src={venture.logo.wordmark}
+                alt={venture.name}
+                width={1306}
+                height={314}
+                priority
+                className="w-full max-w-md md:max-w-xl h-auto -ml-[1.5%]"
+              />
+            </h1>
+          ) : (
+            <h1 className="text-[clamp(2.5rem,12vw,3.75rem)] md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] text-text-main mb-6">
+              {venture.name}
+            </h1>
+          )}
           <p className="text-xs font-bold uppercase tracking-nav text-text-muted mb-8">{venture.category}</p>
           <p className="text-lg md:text-xl font-light text-text-main/80 leading-relaxed max-w-xl mb-12">
             {venture.description}
@@ -38,9 +52,19 @@ export function ComingSoon({ venture }: { venture: Venture }) {
           </div>
         </div>
         <div className="lg:col-span-5 group">
-          <div className="relative aspect-square rounded-2xl overflow-hidden border border-text-main/5 shadow-sm">
-            <VentureVisual slug={venture.slug} />
-          </div>
+          {venture.logo ? (
+            <Image
+              src={venture.logo.icon}
+              alt=""
+              width={512}
+              height={512}
+              className="w-full max-w-sm mx-auto h-auto drop-shadow-xl transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+          ) : (
+            <div className="relative aspect-square rounded-2xl overflow-hidden border border-text-main/5 shadow-sm">
+              <VentureVisual slug={venture.slug} />
+            </div>
+          )}
         </div>
       </div>
     </section>
