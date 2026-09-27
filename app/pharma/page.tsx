@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 export default function PharmaceuticalDevelopment() {
   return (
     <>
+      {/* Background video removed for now; to restore it, add
+          video={{ src: '/assets/video/background.mp4', tone: 'mono' }} */}
       <Hero content={heroContent}>
         <HeroStats stats={heroContent.stats} />
       </Hero>

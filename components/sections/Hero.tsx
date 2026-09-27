@@ -20,14 +20,12 @@ interface HeroProps {
   content: HeroContent
   // Strip pinned to the bottom of the hero (key figures, venture links, etc.)
   children?: React.ReactNode
-  // 'mono': faded black and white; 'muted': softened colour for sharper footage
+  // Optional background video. 'mono': faded black and white; 'muted': softened colour
   video?: { src: string; poster?: string; tone?: 'mono' | 'muted' }
 }
 
-const DEFAULT_VIDEO = { src: '/assets/video/background.mp4', tone: 'mono' as const }
-
-export function Hero({ content: heroContent, children, video = DEFAULT_VIDEO }: HeroProps) {
-  const muted = video.tone === 'muted'
+export function Hero({ content: heroContent, children, video }: HeroProps) {
+  const muted = video?.tone === 'muted'
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -58,33 +56,35 @@ export function Hero({ content: heroContent, children, video = DEFAULT_VIDEO }: 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-bg-main flex flex-col">
       {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        {!isVideoLoaded && <div className="absolute inset-0 bg-bg-secondary animate-pulse" />}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={video.poster}
-          onLoadedData={() => setIsVideoLoaded(true)}
-          className={cn(
-            'w-full h-full object-cover',
-            muted ? 'opacity-90 saturate-[.55] contrast-[1.05]' : 'opacity-50 grayscale scale-110'
-          )}
-        >
-          <source src={video.src} type="video/mp4" />
-        </video>
-        {/* Wash so the headline reads cleanly over any frame */}
-        <div
-          className={cn(
-            'absolute inset-0 bg-gradient-to-r from-bg-main',
-            muted ? 'via-bg-main/70 to-transparent' : 'via-bg-main/80 to-bg-main/10'
-          )}
-        />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-main to-transparent" />
-      </div>
+      {video && (
+        <div className="absolute inset-0 z-0">
+          {!isVideoLoaded && <div className="absolute inset-0 bg-bg-secondary animate-pulse" />}
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={video.poster}
+            onLoadedData={() => setIsVideoLoaded(true)}
+            className={cn(
+              'w-full h-full object-cover',
+              muted ? 'opacity-90 saturate-[.55] contrast-[1.05]' : 'opacity-50 grayscale scale-110'
+            )}
+          >
+            <source src={video.src} type="video/mp4" />
+          </video>
+          {/* Wash so the headline reads cleanly over any frame */}
+          <div
+            className={cn(
+              'absolute inset-0 bg-gradient-to-r from-bg-main',
+              muted ? 'via-bg-main/70 to-transparent' : 'via-bg-main/80 to-bg-main/10'
+            )}
+          />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-main to-transparent" />
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative z-10 flex-grow flex items-center pt-32 pb-16 px-8">
