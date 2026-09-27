@@ -8,13 +8,13 @@ export function VentureVisual({ venture }: { venture: Venture }) {
   if (venture.slug === 'pharma') {
     return (
       <Image
-        src="/assets/images/solution.webp"
+        src="/assets/ventures/pharma/card.webp"
         alt=""
         fill
-        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+        className="object-cover group-hover:scale-105 transition-transform duration-700"
         sizes="(max-width: 768px) 100vw, 33vw"
         placeholder="blur"
-        blurDataURL={blurData.solution}
+        blurDataURL={blurData['pharma-card']}
       />
     )
   }
