@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Eyebrow } from '@/components/ui/Eyebrow'
+import { cn } from '@/lib/utils'
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const
 
@@ -19,9 +20,15 @@ interface HeroProps {
   content: HeroContent
   // Strip pinned to the bottom of the hero (key figures, venture links, etc.)
   children?: React.ReactNode
+  // 'mono': faded black and white; 'muted': softened colour for sharper footage
+  video?: { src: string; poster?: string; tone?: 'mono' | 'muted' }
 }
 
-export function Hero({ content: heroContent, children }: HeroProps) {
+const DEFAULT_VIDEO = { src: '/assets/video/background.mp4', tone: 'mono' as const }
+
+export function Hero({ content: heroContent, children, video = DEFAULT_VIDEO }: HeroProps) {
+  const muted = video.tone === 'muted'
+
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
@@ -60,13 +67,22 @@ export function Hero({ content: heroContent, children }: HeroProps) {
           muted
           playsInline
           preload="metadata"
+          poster={video.poster}
           onLoadedData={() => setIsVideoLoaded(true)}
-          className="w-full h-full object-cover opacity-50 grayscale scale-110"
+          className={cn(
+            'w-full h-full object-cover',
+            muted ? 'opacity-90 saturate-[.55] contrast-[1.05]' : 'opacity-50 grayscale scale-110'
+          )}
         >
-          <source src="/assets/video/background.mp4" type="video/mp4" />
+          <source src={video.src} type="video/mp4" />
         </video>
         {/* Wash so the headline reads cleanly over any frame */}
-        <div className="absolute inset-0 bg-gradient-to-r from-bg-main via-bg-main/80 to-bg-main/10" />
+        <div
+          className={cn(
+            'absolute inset-0 bg-gradient-to-r from-bg-main',
+            muted ? 'via-bg-main/70 to-transparent' : 'via-bg-main/80 to-bg-main/10'
+          )}
+        />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-main to-transparent" />
       </div>
 

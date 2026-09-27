@@ -6,7 +6,10 @@ import { homeContent, ventures } from '@/content/site-content'
 export default function Home() {
   return (
     <>
-      <Hero content={homeContent.hero}>
+      <Hero
+        content={homeContent.hero}
+        video={{ src: '/assets/video/canada.mp4', poster: '/assets/video/canada-poster.jpg', tone: 'muted' }}
+      >
         <ul className="grid grid-cols-1 sm:grid-cols-3 border-t border-text-main/15">
           {ventures.map((venture, index) => (
             <li key={venture.slug}>
