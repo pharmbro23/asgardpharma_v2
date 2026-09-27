@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import { Logo } from '@/components/ui/Logo'
 import { contactContent, footerContent, homeNavItems, ventures } from '@/content/site-content'
 
 export function Footer() {
@@ -11,12 +11,7 @@ export function Footer() {
         <div className="grid md:grid-cols-12 gap-12 mb-20">
           {/* Company Info */}
           <div className="md:col-span-6">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="block w-10 h-10 rounded-full bg-bg-main p-1">
-                <Image src="/logo.svg" alt="" width={32} height={32} className="w-full h-full" />
-              </span>
-              <span className="text-2xl font-bold tracking-logo uppercase">Asgard</span>
-            </div>
+            <Logo size={44} className="mb-8 text-bg-main" />
             <p className="text-sm text-bg-main/60 max-w-xs leading-relaxed">{footerContent.tagline}</p>
           </div>
 

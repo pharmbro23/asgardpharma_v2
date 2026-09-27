@@ -15,7 +15,8 @@ const config: Config = {
         'text-muted': '#666666',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        brand: ['var(--font-jost)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         'logo': '0.2em',

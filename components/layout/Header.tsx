@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { Logo } from '@/components/ui/Logo'
 import { homeNavItems, pharmaNavItems, ventures, contactContent } from '@/content/site-content'
 
 export function Header() {
@@ -120,12 +120,8 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 text-2xl font-bold tracking-logo text-text-main uppercase"
-        >
-          <Image src="/logo.svg" alt="" width={32} height={32} className="w-8 h-8" priority />
-          Asgard
+        <Link href="/" className="text-text-main" aria-label="Asgard Pharmaceuticals home">
+          <Logo size={34} />
         </Link>
 
         {/* Desktop Navigation */}
