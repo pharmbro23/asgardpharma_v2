@@ -23,7 +23,7 @@ import {
 import { Section } from '@/components/ui/Section'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { AnimatedSection, AnimatedStagger, AnimatedItem } from '@/components/ui/AnimatedSection'
-import { EirPhone } from './EirPhone'
+import { EirDemo } from './EirDemo'
 import {
   eirHero,
   eirProblem,
@@ -118,7 +118,7 @@ function Hero() {
         </AnimatedSection>
 
         <AnimatedSection className="lg:col-span-5" delay={0.15}>
-          <EirPhone />
+          <EirDemo />
         </AnimatedSection>
       </div>
     </section>

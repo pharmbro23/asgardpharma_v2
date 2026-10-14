@@ -1,0 +1,77 @@
+// Pill centres in the hero tray render (public/assets/ventures/eir/tray-hero.webp), in the demo's 520 x 680 design px
+// (render px / 3). main: on the counting floor, so it is counted; false: in the trough, which is never counted.
+// Rendered in Blender with exact labels (Counter project: scripts/render_web_hero.py, artifacts/web-hero/tray-hero.json).
+
+export interface TrayPill {
+  x: number
+  y: number
+  main: boolean
+}
+
+export const TRAY_SRC = '/assets/ventures/eir/tray-hero.webp'
+
+export const TRAY_PILLS: TrayPill[] = [
+  { x: 133.8, y: 223.2, main: true },
+  { x: 151.3, y: 186.1, main: true },
+  { x: 197.8, y: 183.4, main: true },
+  { x: 162.5, y: 130.8, main: true },
+  { x: 135.1, y: 128.5, main: true },
+  { x: 132.1, y: 156.7, main: true },
+  { x: 190.5, y: 126.9, main: true },
+  { x: 183.5, y: 205.0, main: true },
+  { x: 90.9, y: 163.1, main: true },
+  { x: 166.8, y: 228.2, main: true },
+  { x: 224.1, y: 122.9, main: true },
+  { x: 118.1, y: 173.4, main: true },
+  { x: 293.9, y: 354.0, main: true },
+  { x: 319.4, y: 344.5, main: true },
+  { x: 350.1, y: 311.0, main: true },
+  { x: 325.3, y: 363.9, main: true },
+  { x: 360.7, y: 375.1, main: true },
+  { x: 313.9, y: 392.9, main: true },
+  { x: 235.5, y: 345.4, main: true },
+  { x: 351.3, y: 337.0, main: true },
+  { x: 312.3, y: 296.7, main: true },
+  { x: 280.2, y: 391.9, main: true },
+  { x: 334.9, y: 284.2, main: true },
+  { x: 314.8, y: 412.4, main: true },
+  { x: 218.9, y: 516.4, main: true },
+  { x: 197.2, y: 506.2, main: true },
+  { x: 275.8, y: 457.9, main: true },
+  { x: 191.1, y: 479.5, main: true },
+  { x: 229.2, y: 478.3, main: true },
+  { x: 177.5, y: 444.9, main: true },
+  { x: 161.0, y: 504.5, main: true },
+  { x: 207.3, y: 550.5, main: true },
+  { x: 220.8, y: 428.9, main: true },
+  { x: 248.6, y: 491.7, main: true },
+  { x: 160.0, y: 471.7, main: true },
+  { x: 309.8, y: 106.1, main: true },
+  { x: 246.6, y: 200.3, main: true },
+  { x: 299.5, y: 242.1, main: true },
+  { x: 277.1, y: 537.5, main: true },
+  { x: 341.4, y: 253.5, main: true },
+  { x: 348.1, y: 137.3, main: true },
+  { x: 110.3, y: 288.6, main: true },
+  { x: 120.2, y: 351.4, main: true },
+  { x: 194.7, y: 358.8, main: true },
+  { x: 167.6, y: 393.4, main: true },
+  { x: 275.4, y: 134.7, main: true },
+  { x: 107.8, y: 204.0, main: true },
+  { x: 177.5, y: 126.1, main: true },
+  { x: 150.6, y: 221.2, main: true },
+  { x: 322.7, y: 379.8, main: true },
+  { x: 338.2, y: 301.9, main: true },
+  { x: 175.3, y: 476.5, main: true },
+  { x: 245.6, y: 463.7, main: true },
+  { x: 101.5, y: 145.3, main: true },
+  { x: 238.5, y: 135.4, main: true },
+  { x: 296.4, y: 309.3, main: true },
+  { x: 322.5, y: 324.6, main: true },
+  { x: 206.9, y: 409.6, main: true },
+  { x: 198.5, y: 458.1, main: true },
+  { x: 444.6, y: 318.3, main: false },
+  { x: 444.0, y: 180.3, main: false },
+  { x: 440.7, y: 482.0, main: false },
+  { x: 442.5, y: 242.3, main: false },
+]
