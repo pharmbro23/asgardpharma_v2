@@ -6,7 +6,6 @@ import {
   BadgeCheck,
   Camera,
   Check,
-  CircleDollarSign,
   CloudOff,
   Cpu,
   FileLock2,
@@ -14,6 +13,7 @@ import {
   MapPin,
   Plus,
   ScanSearch,
+  ShieldAlert,
   ShieldCheck,
   Smartphone,
   ToggleRight,
@@ -39,7 +39,7 @@ import {
 const icons: Record<EirIconKey, typeof Camera> = {
   confidential: FileLock2,
   border: Globe,
-  cost: CircleDollarSign,
+  exposed: ShieldAlert,
   camera: Camera,
   chip: Cpu,
   verify: ScanSearch,
@@ -77,7 +77,7 @@ function Hero() {
         <AnimatedSection className="lg:col-span-7">
           <Image
             src="/assets/ventures/eir/logo.png"
-            alt="Eir"
+            alt="Eir Count"
             width={1447}
             height={477}
             priority
@@ -219,7 +219,7 @@ function PrivacyDiagram() {
 
 function Privacy() {
   return (
-    <section id="privacy" className="bg-eir-green text-white py-24 md:py-32 px-8">
+    <section id="privacy" className="bg-eir-deep text-white py-24 md:py-32 px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-16 md:mb-20">
           <AnimatedSection className="lg:col-span-6">
@@ -261,7 +261,7 @@ function Comparison() {
           <div className="hidden md:block p-5" />
           <div className="p-5 text-text-muted">{cloudLabel}</div>
           <div className="p-5 bg-eir-green text-white flex items-center gap-2">
-            <BadgeCheck size={16} className="text-eir-gold" />
+            <BadgeCheck size={16} className="text-white" />
             {eirLabel}
           </div>
         </div>
@@ -275,8 +275,8 @@ function Comparison() {
               <X size={16} className="mt-0.5 flex-shrink-0 text-text-main/30" />
               {row.cloud}
             </div>
-            <div className="px-5 py-4 md:py-5 bg-eir-green/[0.06] text-eir-green font-semibold flex items-start gap-2">
-              <Check size={16} className="mt-0.5 flex-shrink-0 text-eir-gold" />
+            <div className="px-5 py-4 md:py-5 bg-eir-green/[0.06] text-text-main font-semibold flex items-start gap-2">
+              <Check size={16} className="mt-0.5 flex-shrink-0 text-eir-green" />
               {row.eir}
             </div>
           </div>
@@ -306,7 +306,10 @@ function Pricing() {
         <AnimatedSection className="lg:col-span-6" delay={0.1}>
           <div className="rounded-3xl bg-white border border-text-main/5 shadow-xl p-8 md:p-10 max-w-md lg:ml-auto">
             <Image src="/assets/ventures/eir/logo.png" alt="" width={1447} height={477} className="h-9 w-auto mb-8" />
-            <p className="text-3xl font-bold tracking-tighter text-text-main">{plan.price}</p>
+            <p className="text-5xl font-bold tracking-tighter text-text-main">
+              {plan.price}
+              <span className="text-lg font-semibold tracking-normal text-text-muted">{plan.period}</span>
+            </p>
             <p className="text-sm text-eir-gold font-semibold mt-1 mb-8">{plan.note}</p>
             <ul className="space-y-4 mb-10">
               {plan.includes.map((item) => (

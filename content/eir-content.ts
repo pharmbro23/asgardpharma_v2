@@ -10,22 +10,22 @@ export const eirNavItems: NavItem[] = [
   { label: 'FAQ', href: '#faq', id: 'faq' },
 ]
 
-const earlyAccessHref = 'mailto:info@asgardpharma.ca?subject=Eir%20early%20access'
+const earlyAccessHref = 'mailto:info@asgardpharma.ca?subject=Eir%20Count%20early%20access'
 
 export const eirHero = {
-  eyebrow: 'Eir by Asgard Pharmaceuticals',
-  headline: ['Private pill', 'counting, right', 'on your phone'],
+  eyebrow: 'Eir Count by Asgard Pharmaceuticals',
+  headline: ['Zero-cloud', 'pill counting', 'on your phone'],
   subtext:
-    "Eir counts tablets and capsules with an AI model that runs entirely on your device. No uploads, no subscriptions, and no patient data leaving your pharmacy.",
+    'Eir Count counts tablets and capsules with AI that runs entirely on your phone. Photos stay on your phone, so a patient label that slips into the frame stays in your pharmacy.',
   primaryCta: { text: 'Get early access', href: earlyAccessHref },
   secondaryCta: { text: 'How it works', href: '#how' },
-  highlights: ['On-device AI', 'Works offline', 'One-time purchase', 'Built in Canada'],
+  highlights: ['Zero-cloud AI', 'Works offline', '14 days free', 'Built in Canada'],
 }
 
 export type EirIconKey =
   | 'confidential'
   | 'border'
-  | 'cost'
+  | 'exposed'
   | 'camera'
   | 'chip'
   | 'verify'
@@ -42,14 +42,14 @@ export interface EirPoint {
 
 export const eirProblem = {
   eyebrow: 'The problem',
-  heading: 'Most counting apps send your photos somewhere else.',
+  heading: 'Cloud counting apps send your photos out the door.',
   intro:
-    "Many pill-counting apps use your phone's camera, then upload every photo to a third-party AI service to do the counting. Images of your counting tray, and sometimes a patient's label caught in the corner of the frame, leave the pharmacy and are processed on servers you don't control, often outside Canada.",
+    "Many pill-counting apps upload every photo of your counting tray to a remote AI server to do the counting. Pharmacy counters are busy: a vial label, a bag tag, a hard copy or a screen ends up in the frame. With a cloud app, that patient information leaves your pharmacy with the photo, and nobody has to make a mistake for it to happen.",
   points: [
     {
       icon: 'confidential',
-      title: 'Patient confidentiality',
-      text: "One stray prescription label in the frame puts a patient's name and medication on someone else's server.",
+      title: 'One label in the frame',
+      text: "A patient's name, Rx number or medication caught in the corner of a photo is personal health information, now sitting on someone else's server.",
     },
     {
       icon: 'border',
@@ -57,9 +57,9 @@ export const eirProblem = {
       text: 'Large AI providers commonly process requests on servers abroad, outside the reach of Canadian privacy protections.',
     },
     {
-      icon: 'cost',
-      title: 'Costs that never stop',
-      text: 'Monthly subscriptions and per-photo AI credits add up to hundreds of dollars a year, for every pharmacy.',
+      icon: 'exposed',
+      title: "You can't unsend a photo",
+      text: "Once it's uploaded, you can't see where it's kept, who can open it, how long it stays, or whether it trains someone else's AI. Your pharmacy is still accountable for it.",
     },
   ] as EirPoint[],
 }
@@ -76,7 +76,7 @@ export const eirHow = {
     {
       icon: 'chip',
       title: 'Counted on your phone',
-      text: "Eir's model, trained in-house by Asgard, identifies and counts every pill directly on the device.",
+      text: "Eir Count's AI, trained in-house by Asgard, finds and counts every pill on the phone itself. No upload, no server, no waiting on Wi-Fi.",
     },
     {
       icon: 'verify',
@@ -87,15 +87,15 @@ export const eirHow = {
 }
 
 export const eirPrivacy = {
-  eyebrow: 'Privacy by design',
-  heading: 'Your photos stay on your phone. Full stop.',
+  eyebrow: 'Edge AI. Zero cloud.',
+  heading: 'What happens on the counter stays on the counter.',
   intro:
-    "Eir was built so that patient privacy isn't a setting you have to find. The model lives on the device, so there is nothing to send.",
+    "Eir Count runs its AI at the edge: on the phone in your hand, not in a data centre. Counting has no upload step to secure, so a label that slips into the frame stays in the pharmacy. Privacy isn't a setting you have to find. It's how Eir Count is built.",
   points: [
     {
       icon: 'upload',
       title: 'Nothing is uploaded',
-      text: 'Photos are processed on your device and are never sent to Asgard or to any third party.',
+      text: 'Photos are counted and kept on your phone. Nothing leaves the phone unless you choose to share it.',
     },
     {
       icon: 'offline',
@@ -117,36 +117,39 @@ export const eirPrivacy = {
 
 export const eirComparison = {
   eyebrow: 'Compare',
-  heading: 'Eir vs. cloud counting apps',
-  columns: ['Typical cloud app', 'Eir'],
+  heading: 'Eir Count vs. cloud counting apps',
+  columns: ['Typical cloud app', 'Eir Count'],
   rows: [
     { label: 'Where counting happens', cloud: 'Remote AI servers', eir: 'On your phone' },
-    { label: 'Photos leave the device', cloud: 'Yes, with every count', eir: 'Never, unless you opt in' },
+    { label: 'Photos leave the device', cloud: 'Yes, with every count', eir: 'Only if you choose to share' },
+    { label: 'A patient label caught in the frame', cloud: 'Uploaded with the photo', eir: 'Stays on your phone' },
     { label: 'Internet required', cloud: 'Yes', eir: 'No' },
     { label: 'Where data is processed', cloud: 'Often outside Canada', eir: 'Inside your pharmacy' },
-    { label: 'Pricing', cloud: 'Monthly subscription and AI credits', eir: 'One-time purchase' },
+    { label: 'Pricing', cloud: 'Monthly subscription plus AI credits', eir: '$5 a month, unlimited counts' },
     { label: 'AI model', cloud: 'General-purpose, third-party', eir: 'Purpose-trained for pill counting' },
   ],
 }
 
 export const eirPricing = {
   eyebrow: 'Pricing',
-  heading: 'Pay once. Count forever.',
-  text: 'Eir is a one-time purchase. No subscriptions, no per-count credits and no surprise bills.',
+  heading: 'Free for 14 days. Then $5 a month.',
+  text: 'One simple plan with unlimited counts and every feature. No per-count credits, no surprise bills, and you can cancel any time. Running more than one store? Pharmacy and group licences are priced per store.',
   plan: {
-    name: 'Eir',
-    price: 'One-time purchase',
-    note: 'Pricing announced at launch',
+    name: 'Eir Count',
+    price: '$5',
+    period: '/month',
+    note: 'After a 14-day free trial',
     includes: [
+      '14 days free to try',
       'Unlimited counts',
-      'Every count processed on your device',
-      'No monthly fees or AI credits',
-      'Optional, opt-in improvement program',
+      'Every count processed on your phone',
+      'No per-count AI credits',
+      'Cancel any time',
     ],
   },
   comparison: {
     value: '$360+',
-    label: 'what a typical $30/month counting subscription costs every year',
+    label: 'a year for a typical $30/month cloud counting subscription. Eir Count is $60 a year.',
   },
 }
 
@@ -155,27 +158,35 @@ export const eirFaq = {
   heading: 'Questions, answered',
   items: [
     {
-      q: 'Does Eir send my photos anywhere?',
-      a: 'No. Counting happens entirely on your phone. Photos are never sent to Asgard or any third party unless you choose to join the improvement program.',
+      q: 'Does Eir Count send my photos anywhere?',
+      a: 'Not to count them. Counting happens entirely on your phone, and nothing leaves it unless you choose to share it, for example by emailing an export or joining the improvement program.',
+    },
+    {
+      q: 'What if a patient label ends up in the photo?',
+      a: "It stays on your phone. Eir Count never uploads photos to count them, so whatever is in the frame stays in your pharmacy. You also choose how long photos are kept on the phone, from two weeks to forever.",
     },
     {
       q: 'Do I need an internet connection?',
-      a: 'No. The counting model runs on the device, so Eir works without Wi-Fi or mobile data.',
+      a: 'No. The counting model runs on the device, so Eir Count works without Wi-Fi or mobile data.',
     },
     {
       q: 'What is the improvement program?',
       a: 'An optional way to help us train better models by sharing some of your counting photos with Asgard. It is off by default, you can leave at any time, and nothing is shared unless you turn it on.',
     },
     {
-      q: 'Is Eir a subscription?',
-      a: 'No. You pay once for the app. There are no monthly fees and no per-count AI credits.',
+      q: 'How much does Eir Count cost?',
+      a: '$5 a month after a 14-day free trial, with unlimited counts and no per-count AI credits. You can cancel any time.',
     },
     {
-      q: 'Does Eir replace pharmacist verification?',
-      a: 'No. Eir is a counting aid. It highlights every pill it detects so you can check the count quickly, but the pharmacist remains responsible for verifying each prescription.',
+      q: 'Do you offer pharmacy or group pricing?',
+      a: "Yes. Pharmacy licences are priced per store, with discounts for groups. Email info@asgardpharma.ca and we'll put a quote together.",
     },
     {
-      q: 'Which phones will Eir support?',
+      q: 'Does Eir Count replace pharmacist verification?',
+      a: 'No. Eir Count is a counting aid. It highlights every pill it detects so you can check the count quickly, but the pharmacist remains responsible for verifying each prescription.',
+    },
+    {
+      q: 'Which phones will Eir Count support?',
       a: 'Supported devices will be announced at launch. Join the early access list and we will let you know.',
     },
   ],
@@ -183,6 +194,6 @@ export const eirFaq = {
 
 export const eirCta = {
   heading: 'Be the first to count with Eir.',
-  text: "Eir is in development. Join the early access list and we'll let you know when it's ready for your pharmacy.",
+  text: "Eir Count is in development. Join the early access list and we'll let you know when it's ready for your pharmacy.",
   cta: { text: 'Get early access', href: earlyAccessHref },
 }
