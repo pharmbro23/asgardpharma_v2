@@ -4,7 +4,7 @@ import { EirPage } from '@/components/ventures/eir/EirPage'
 export const metadata: Metadata = {
   title: 'Eir Count: Zero-cloud pill counting',
   description:
-    'Eir Count counts tablets and capsules with AI that runs entirely on your phone. Photos stay on your phone, so patient information stays in your pharmacy. $5 a month after a 14-day free trial.',
+    'Eir Count is a pill counting aid for pharmacies. Its AI counts tablets and capsules entirely on your phone, so photos are never uploaded to be counted. CAD $5 a month plus tax, with a 14-day free trial for new subscribers.',
 }
 
 export default function Eir() {

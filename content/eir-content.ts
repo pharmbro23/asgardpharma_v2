@@ -2,12 +2,13 @@ import type { NavItem } from '@/types'
 
 // Eir product page (/eir/)
 
+// Absolute links, so they also work from the policy and support pages under /eir/
 export const eirNavItems: NavItem[] = [
-  { label: 'Why Eir', href: '#problem', id: 'problem' },
-  { label: 'How it works', href: '#how', id: 'how' },
-  { label: 'Privacy', href: '#privacy', id: 'privacy' },
-  { label: 'Compare', href: '#compare', id: 'compare' },
-  { label: 'FAQ', href: '#faq', id: 'faq' },
+  { label: 'Why Eir', href: '/eir/#problem', id: 'problem' },
+  { label: 'How it works', href: '/eir/#how', id: 'how' },
+  { label: 'Privacy', href: '/eir/#privacy', id: 'privacy' },
+  { label: 'Compare', href: '/eir/#compare', id: 'compare' },
+  { label: 'FAQ', href: '/eir/#faq', id: 'faq' },
 ]
 
 const earlyAccessHref = 'mailto:info@asgardpharma.ca?subject=Eir%20Count%20early%20access'
@@ -16,10 +17,10 @@ export const eirHero = {
   eyebrow: 'Eir Count by Asgard Pharmaceuticals',
   headline: ['Zero-cloud', 'pill counting', 'on your phone'],
   subtext:
-    'Eir Count counts tablets and capsules with AI that runs entirely on your phone. Photos stay on your phone, so a patient label that slips into the frame stays in your pharmacy.',
+    'Eir Count counts tablets and capsules with AI that runs entirely on your phone. No photo is ever uploaded to be counted, so even a label that slips into the frame stays in your pharmacy. Eir counts; you check.',
   primaryCta: { text: 'Get early access', href: earlyAccessHref },
   secondaryCta: { text: 'How it works', href: '#how' },
-  highlights: ['Zero-cloud AI', 'Works offline', '14 days free', 'Built in Canada'],
+  highlights: ['Zero-cloud counting', 'Counts offline', '14-day free trial', 'Built in Canada'],
 }
 
 export type EirIconKey =
@@ -31,7 +32,7 @@ export type EirIconKey =
   | 'verify'
   | 'upload'
   | 'offline'
-  | 'optin'
+  | 'team'
   | 'canada'
 
 export interface EirPoint {
@@ -71,17 +72,17 @@ export const eirHow = {
     {
       icon: 'camera',
       title: 'Pour and point',
-      text: 'Spread tablets or capsules on a counting tray and point your phone camera at them.',
+      text: 'Spread one medication on a counting tray, keep labels out of the frame, and hold your phone above it.',
     },
     {
       icon: 'chip',
       title: 'Counted on your phone',
-      text: "Eir Count's AI, trained in-house by Asgard, finds and counts every pill on the phone itself. No upload, no server, no waiting on Wi-Fi.",
+      text: "Eir Count's AI estimates how many tablets or capsules are on the tray, on the phone itself. No upload, no server, no waiting on Wi-Fi.",
     },
     {
       icon: 'verify',
       title: 'Verify and dispense',
-      text: 'Each detected pill is highlighted, so you can confirm the count at a glance before dispensing.',
+      text: 'Each pill Eir counted is marked with a dot, so you can check the count against the tray. Eir Count is a counting aid: you verify every count before dispensing.',
     },
   ] as EirPoint[],
 }
@@ -91,28 +92,35 @@ export const eirPrivacy = {
   heading: 'What happens on the counter stays on the counter.',
   intro:
     "Eir Count runs its AI at the edge: on the phone in your hand, not in a data centre. Counting has no upload step to secure, so a label that slips into the frame stays in the pharmacy. Privacy isn't a setting you have to find. It's how Eir Count is built.",
+  diagram: {
+    phone: { title: 'Your phone', text: 'Photo, model and count' },
+    cloud: { title: 'Cloud servers', text: 'Not used for counting' },
+  },
   points: [
     {
       icon: 'upload',
-      title: 'Nothing is uploaded',
-      text: 'Photos are counted and kept on your phone. Nothing leaves the phone unless you choose to share it.',
+      title: 'No upload to count',
+      text: 'Photos are counted and kept on your phone. They leave it only if you share or export them, and you choose how long they are kept.',
     },
     {
       icon: 'offline',
-      title: 'Works offline',
-      text: 'Counting needs no internet connection, so it keeps working in the back room, the basement or a dead zone.',
+      title: 'Counts offline',
+      text: 'Counting needs no internet connection, so it keeps working in the back room or a dead zone. Your subscription is re-checked when the phone is back online.',
     },
     {
-      icon: 'optin',
-      title: 'Improvements are opt-in',
-      text: 'You can choose to share photos to help train future models. It is off by default and you can turn it off at any time.',
+      icon: 'team',
+      title: 'Shared only with your team',
+      text: "Optional pharmacy sharing sends counts only to your own pharmacy's devices, over the store Wi-Fi, encrypted with your pharmacy's own key. No accounts, no server in between.",
     },
     {
       icon: 'canada',
       title: 'Built in Canada',
-      text: 'Designed, trained and supported by Asgard Pharmaceuticals, with Canadian health-privacy law in mind.',
+      text: 'Designed, developed and supported by Asgard Pharmaceuticals in Canada, with Canadian health-privacy law in mind.',
     },
   ] as EirPoint[],
+  finePrint:
+    "Photos and patient details stay in your pharmacy unless you choose to share them. The app does go online to check your subscription with Apple or Google, and on Android, Google's barcode scanner sends Google technical usage data (never your photos or barcodes).",
+  finePrintLink: { text: 'Read the privacy policy', href: '/eir/privacy/' },
 }
 
 export const eirComparison = {
@@ -121,11 +129,11 @@ export const eirComparison = {
   columns: ['Typical cloud app', 'Eir Count'],
   rows: [
     { label: 'Where counting happens', cloud: 'Remote AI servers', eir: 'On your phone' },
-    { label: 'Photos leave the device', cloud: 'Yes, with every count', eir: 'Only if you choose to share' },
-    { label: 'A patient label caught in the frame', cloud: 'Uploaded with the photo', eir: 'Stays on your phone' },
-    { label: 'Internet required', cloud: 'Yes', eir: 'No' },
-    { label: 'Where data is processed', cloud: 'Often outside Canada', eir: 'Inside your pharmacy' },
-    { label: 'Pricing', cloud: 'Monthly subscription plus AI credits', eir: '$5 a month, unlimited counts' },
+    { label: 'Photos uploaded to count them', cloud: 'Yes, with every count', eir: 'Never' },
+    { label: 'A patient label caught in the frame', cloud: 'Uploaded with the photo', eir: 'Stays in your pharmacy' },
+    { label: 'Internet needed to count', cloud: 'Yes', eir: 'No' },
+    { label: 'Where photos are processed', cloud: 'Often outside Canada', eir: 'On your phone, in your pharmacy' },
+    { label: 'Pricing', cloud: 'Monthly subscription plus AI credits', eir: 'CAD $5 a month, unlimited counts' },
     { label: 'AI model', cloud: 'General-purpose, third-party', eir: 'Purpose-trained for pill counting' },
   ],
 }
@@ -133,23 +141,28 @@ export const eirComparison = {
 export const eirPricing = {
   eyebrow: 'Pricing',
   heading: 'Free for 14 days. Then $5 a month.',
-  text: 'One simple plan with unlimited counts and every feature. No per-count credits, no surprise bills, and you can cancel any time. Running more than one store? Pharmacy and group licences are priced per store.',
+  text: 'One simple plan with unlimited counts and every feature, billed through the App Store or Google Play. No per-count credits. It renews automatically each month until you cancel, and you can cancel any time in your App Store or Google Play account.',
   plan: {
     name: 'Eir Count',
+    currency: 'CAD',
     price: '$5',
     period: '/month',
-    note: 'After a 14-day free trial',
+    note: 'Plus applicable taxes',
     includes: [
-      '14 days free to try',
+      '14-day free trial for new subscribers',
       'Unlimited counts',
       'Every count processed on your phone',
       'No per-count AI credits',
-      'Cancel any time',
+      'Cancel any time in the App Store or Google Play',
     ],
+    finePrint:
+      'New subscribers get one 14-day free trial. When it ends, CAD $5.00 a month plus applicable taxes is charged to your App Store or Google Play account and renews monthly until you cancel. Deleting the app does not cancel the subscription.',
   },
-  comparison: {
-    value: '$360+',
-    label: 'a year for a typical $30/month cloud counting subscription. Eir Count is $60 a year.',
+  licences: {
+    eyebrow: 'Pharmacies and groups',
+    value: 'Priced per store',
+    text: 'Running more than one pharmacy? Pharmacy and group licences are priced per store. Email us and we will put a quote together.',
+    cta: { text: 'Ask for a quote', href: 'mailto:info@asgardpharma.ca?subject=Eir%20Count%20pharmacy%20licence' },
   },
 }
 
@@ -159,31 +172,32 @@ export const eirFaq = {
   items: [
     {
       q: 'Does Eir Count send my photos anywhere?',
-      a: 'Not to count them. Counting happens entirely on your phone, and nothing leaves it unless you choose to share it, for example by emailing an export or joining the improvement program.',
+      a: "Not to count them. Counting happens entirely on your phone. A photo leaves it only when you choose: when you share a count, export an audit report or email support, or when pharmacy sharing sends counts to your own pharmacy's devices over the store Wi-Fi, encrypted with your pharmacy's key.",
+    },
+    {
+      q: 'Does the app send anything else?',
+      a: "A little, and never your photos or patient details. It checks your subscription with Apple or Google. On Android, the barcode scanner is a Google component (ML Kit) that sends Google technical usage data about the scanner, never your photos or barcodes. Eir Count has no ads, no tracking and no accounts.",
+      link: { text: 'Read the privacy policy', href: '/eir/privacy/' },
     },
     {
       q: 'What if a patient label ends up in the photo?',
-      a: "It stays on your phone. Eir Count never uploads photos to count them, so whatever is in the frame stays in your pharmacy. You also choose how long photos are kept on the phone, from two weeks to forever.",
+      a: "It isn't uploaded. Eir Count never sends photos anywhere to count them, so whatever is in the frame stays in your pharmacy. Still, keep prescription labels and anything that identifies a patient out of the frame, because a photo goes wherever you choose to share or export it. You also choose how long photos are kept on the phone, from two weeks to forever.",
     },
     {
       q: 'Do I need an internet connection?',
-      a: 'No. The counting model runs on the device, so Eir Count works without Wi-Fi or mobile data.',
-    },
-    {
-      q: 'What is the improvement program?',
-      a: 'An optional way to help us train better models by sharing some of your counting photos with Asgard. It is off by default, you can leave at any time, and nothing is shared unless you turn it on.',
+      a: 'Not to count. The counting model runs on the device, so counting works without Wi-Fi or mobile data. The app checks your subscription with the App Store or Google Play whenever the phone is online; if a phone stays offline for several days, it will ask you to connect so counting can continue.',
     },
     {
       q: 'How much does Eir Count cost?',
-      a: '$5 a month after a 14-day free trial, with unlimited counts and no per-count AI credits. You can cancel any time.',
+      a: 'CAD $5 a month plus applicable taxes, with unlimited counts and no per-count AI credits. New subscribers get a 14-day free trial. The subscription renews automatically each month until you cancel, which you can do any time in your App Store or Google Play account.',
     },
     {
       q: 'Do you offer pharmacy or group pricing?',
-      a: "Yes. Pharmacy licences are priced per store, with discounts for groups. Email info@asgardpharma.ca and we'll put a quote together.",
+      a: "Yes. Pharmacy and group licences are priced per store, with discounts for groups. Email info@asgardpharma.ca and we'll put a quote together.",
     },
     {
       q: 'Does Eir Count replace pharmacist verification?',
-      a: 'No. Eir Count is a counting aid. It highlights every pill it detects so you can check the count quickly, but the pharmacist remains responsible for verifying each prescription.',
+      a: 'No. Eir Count is a counting aid. It marks each pill it counted so you can check the count against the tray, and the pharmacist verifies every count before dispensing.',
     },
     {
       q: 'Which phones will Eir Count support?',

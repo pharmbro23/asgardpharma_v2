@@ -46,7 +46,7 @@ export const ventures: Venture[] = [
     name: 'Eir Count',
     href: '/eir/',
     category: 'Private pill counting',
-    description: 'Zero-cloud pill counting for pharmacies: the AI runs on the phone, patient photos stay on it, and it works offline. $5 a month after a 14-day free trial.',
+    description: 'Zero-cloud pill counting for pharmacies: the AI counts on the phone, photos are never uploaded to be counted, and counting works offline. CAD $5 a month plus tax, with a 14-day free trial for new subscribers.',
     status: 'In development',
     logo: {
       wordmark: '/assets/ventures/eir/wordmark.png',

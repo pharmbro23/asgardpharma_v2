@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   ArrowRight,
   BadgeCheck,
@@ -16,7 +17,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   Smartphone,
-  ToggleRight,
+  Users,
   WifiOff,
   X,
 } from 'lucide-react'
@@ -35,6 +36,7 @@ import {
   eirCta,
   type EirIconKey,
 } from '@/content/eir-content'
+import { eirInfoChrome, eirInfoHref, eirLegalPagesLive, eirVisibleInfoSlugs } from '@/content/eir-legal'
 
 const icons: Record<EirIconKey, typeof Camera> = {
   confidential: FileLock2,
@@ -45,7 +47,7 @@ const icons: Record<EirIconKey, typeof Camera> = {
   verify: ScanSearch,
   upload: CloudOff,
   offline: WifiOff,
-  optin: ToggleRight,
+  team: Users,
   canada: MapPin,
 }
 
@@ -192,8 +194,10 @@ function PrivacyDiagram() {
               <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             </span>
           </span>
-          <p className="mt-5 text-[10px] sm:text-xs font-bold uppercase tracking-nav text-white">Your phone</p>
-          <p className="text-[11px] sm:text-xs text-white/60 mt-1">Photo, model and count</p>
+          <p className="mt-5 text-[10px] sm:text-xs font-bold uppercase tracking-nav text-white">
+            {eirPrivacy.diagram.phone.title}
+          </p>
+          <p className="text-[11px] sm:text-xs text-white/60 mt-1">{eirPrivacy.diagram.phone.text}</p>
         </div>
 
         {/* Blocked path */}
@@ -204,13 +208,15 @@ function PrivacyDiagram() {
           </span>
         </div>
 
-        {/* Cloud: never reached */}
+        {/* Cloud: not used for counting */}
         <div className="flex w-24 sm:w-32 flex-col items-center text-center opacity-50">
           <span className="flex w-16 h-16 sm:w-24 sm:h-24 items-center justify-center rounded-2xl sm:rounded-3xl border-2 border-dashed border-white/40 text-white">
             <CloudOff strokeWidth={1.25} className="w-8 h-8 sm:w-10 sm:h-10" />
           </span>
-          <p className="mt-5 text-[10px] sm:text-xs font-bold uppercase tracking-nav text-white">Cloud servers</p>
-          <p className="text-[11px] sm:text-xs text-white/60 mt-1">Never contacted</p>
+          <p className="mt-5 text-[10px] sm:text-xs font-bold uppercase tracking-nav text-white">
+            {eirPrivacy.diagram.cloud.title}
+          </p>
+          <p className="text-[11px] sm:text-xs text-white/60 mt-1">{eirPrivacy.diagram.cloud.text}</p>
         </div>
       </div>
     </div>
@@ -241,6 +247,23 @@ function Privacy() {
             </AnimatedItem>
           ))}
         </AnimatedStagger>
+
+        <AnimatedSection className="mt-16 border-t border-white/10 pt-6">
+          <p className="max-w-4xl text-xs leading-relaxed text-white/55">
+            {eirPrivacy.finePrint}
+            {eirLegalPagesLive && (
+              <>
+                {' '}
+                <Link
+                  href={eirPrivacy.finePrintLink.href}
+                  className="whitespace-nowrap font-semibold text-white/80 underline decoration-white/30 underline-offset-2 hover:text-eir-gold hover:decoration-eir-gold transition-colors"
+                >
+                  {eirPrivacy.finePrintLink.text}
+                </Link>
+              </>
+            )}
+          </p>
+        </AnimatedSection>
       </div>
     </section>
   )
@@ -287,7 +310,7 @@ function Comparison() {
 }
 
 function Pricing() {
-  const { plan, comparison } = eirPricing
+  const { plan, licences } = eirPricing
   return (
     <Section variant="gray">
       <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -296,10 +319,16 @@ function Pricing() {
           <h2 className={`${headingClass} text-text-main mb-8`}>{eirPricing.heading}</h2>
           <p className="text-lg text-text-main/75 leading-relaxed max-w-md mb-12">{eirPricing.text}</p>
           <div className="border-t border-text-main/15 pt-6 max-w-sm">
-            <p className="text-5xl font-bold tracking-tighter text-text-main/30 line-through decoration-2">
-              {comparison.value}
-            </p>
-            <p className="text-sm text-text-muted mt-2">{comparison.label}</p>
+            <p className="text-xs font-bold uppercase tracking-nav text-eir-gold">{licences.eyebrow}</p>
+            <p className="mt-3 text-4xl md:text-5xl font-bold tracking-tighter text-text-main">{licences.value}</p>
+            <p className="text-sm text-text-muted leading-relaxed mt-3">{licences.text}</p>
+            <a
+              href={licences.cta.href}
+              className="group mt-6 inline-flex items-center gap-4 text-xs font-bold uppercase tracking-cta text-text-main hover:text-eir-green transition-colors"
+            >
+              {licences.cta.text}
+              <span className="block w-12 h-px bg-current transition-all group-hover:w-16" />
+            </a>
           </div>
         </AnimatedSection>
 
@@ -307,6 +336,7 @@ function Pricing() {
           <div className="rounded-3xl bg-white border border-text-main/5 shadow-xl p-8 md:p-10 max-w-md lg:ml-auto">
             <Image src="/assets/ventures/eir/logo.png" alt="" width={1447} height={477} className="h-9 w-auto mb-8" />
             <p className="text-5xl font-bold tracking-tighter text-text-main">
+              <span className="mr-2 align-top text-base font-semibold tracking-normal text-text-muted">{plan.currency}</span>
               {plan.price}
               <span className="text-lg font-semibold tracking-normal text-text-muted">{plan.period}</span>
             </p>
@@ -322,6 +352,7 @@ function Pricing() {
               ))}
             </ul>
             <PrimaryButton href={eirCta.cta.href}>{eirCta.cta.text}</PrimaryButton>
+            <p className="mt-8 border-t border-text-main/10 pt-6 text-xs leading-relaxed text-text-muted">{plan.finePrint}</p>
           </div>
         </AnimatedSection>
       </div>
@@ -348,7 +379,20 @@ function Faq() {
                     className="flex-shrink-0 text-eir-green transition-transform duration-300 group-open:rotate-45"
                   />
                 </summary>
-                <p className="mt-4 pr-10 text-text-muted leading-relaxed">{item.a}</p>
+                <p className="mt-4 pr-10 text-text-muted leading-relaxed">
+                  {item.a}
+                  {item.link && eirLegalPagesLive && (
+                    <>
+                      {' '}
+                      <Link
+                        href={item.link.href}
+                        className="font-semibold text-eir-green underline decoration-eir-green/30 underline-offset-2 hover:decoration-eir-green"
+                      >
+                        {item.link.text}
+                      </Link>
+                    </>
+                  )}
+                </p>
               </details>
             ))}
           </div>
@@ -381,7 +425,34 @@ function FinalCta() {
           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
         </a>
       </AnimatedSection>
+      <EirInfoLinks />
     </section>
+  )
+}
+
+// Privacy policy, terms and support, at the foot of the Eir page
+function EirInfoLinks() {
+  const chrome = eirInfoChrome.en
+  const slugs = eirVisibleInfoSlugs
+  return (
+    <nav
+      aria-label="Eir Count policies and support"
+      className="mx-auto mt-20 max-w-4xl border-t border-white/15 pt-8 flex flex-col items-center gap-5 md:flex-row md:justify-between"
+    >
+      <p className="text-center text-xs text-white/60 md:text-left">{chrome.aside}</p>
+      <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        {slugs.map((slug) => (
+          <li key={slug}>
+            <Link
+              href={eirInfoHref(slug, 'en')}
+              className="text-xs font-bold uppercase tracking-nav text-white/80 hover:text-white underline-offset-4 hover:underline"
+            >
+              {chrome.labels[slug]}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 

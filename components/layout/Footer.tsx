@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
 import { contactContent, footerContent, homeNavItems, ventures } from '@/content/site-content'
+import { eirInfoChrome, eirInfoHref, eirVisibleInfoSlugs as eirInfoSlugs } from '@/content/eir-legal'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -54,6 +55,18 @@ export function Footer() {
 
         <div className="border-t border-bg-main/10 pt-8 flex flex-col md:flex-row justify-between gap-4 text-xs text-bg-main/50">
           <p>&copy; {currentYear} {footerContent.company} All rights reserved.</p>
+          <nav aria-label="Eir Count policies and support">
+            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <li className="uppercase tracking-nav text-bg-main/40">Eir Count</li>
+              {eirInfoSlugs.map((slug) => (
+                <li key={slug}>
+                  <Link href={eirInfoHref(slug, 'en')} className="hover:text-bg-main transition-colors">
+                    {eirInfoChrome.en.labels[slug]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <p className="uppercase tracking-nav">Made in Canada</p>
         </div>
       </div>
