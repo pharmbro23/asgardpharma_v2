@@ -35,9 +35,23 @@ export function ComingSoon({ venture }: { venture: Venture }) {
             {venture.description}
           </p>
           <div className="flex flex-wrap items-center gap-8">
+            {venture.appUrl && (
+              <a
+                href={venture.appUrl}
+                rel="noopener"
+                className="group inline-flex items-center gap-3 bg-text-main text-bg-main px-8 py-4 text-xs font-bold uppercase tracking-cta border border-text-main hover:bg-transparent hover:text-text-main transition-colors"
+              >
+                Open {venture.name}
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              </a>
+            )}
             <a
               href={`mailto:${contactContent.email}?subject=${encodeURIComponent(venture.name)}`}
-              className="group inline-flex items-center gap-3 bg-text-main text-bg-main px-8 py-4 text-xs font-bold uppercase tracking-cta border border-text-main hover:bg-transparent hover:text-text-main transition-colors"
+              className={
+                venture.appUrl
+                  ? 'group inline-flex items-center gap-3 bg-transparent text-text-main px-8 py-4 text-xs font-bold uppercase tracking-cta border border-text-main hover:bg-text-main hover:text-bg-main transition-colors'
+                  : 'group inline-flex items-center gap-3 bg-text-main text-bg-main px-8 py-4 text-xs font-bold uppercase tracking-cta border border-text-main hover:bg-transparent hover:text-text-main transition-colors'
+              }
             >
               Get early access
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
